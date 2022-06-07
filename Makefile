@@ -1,8 +1,8 @@
 CHECKNAME = checker
 PUSHNAME = push_swap
 
-CHECKSRC = src/checker.c
-PUSHSRC = src/push_swap.c
+CHECKSRC = src/checker/checker.c
+PUSHSRC = src/push_swap/push_swap.c
 
 OBJS = *.o
 CFLAGS = -Wall -Werror -Wextra
