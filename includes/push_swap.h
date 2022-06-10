@@ -6,14 +6,14 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/06/10 15:19:28 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:28:34 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-# include "../../ft_printf/includes/ft_printf.h"
+# include "../ft_printf/includes/ft_printf.h"
 
 typedef enum e_moves
 {
@@ -30,7 +30,7 @@ typedef enum e_moves
 	RRR,
 }	t_moves;
 
-typedef struct s_tack;
+typedef struct s_tack
 {
 	int	*a_stack;
 	int	*b_stack;
