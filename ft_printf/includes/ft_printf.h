@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:07:36 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/28 14:21:32 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:50:44 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int					convert_no(t_print *print, const char *format);
 */
 
 int					check_colour(t_print *p, const char	*format);
-int					ft_strlen(const char *str);
+int					ft_strlen_int(const char *str);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
