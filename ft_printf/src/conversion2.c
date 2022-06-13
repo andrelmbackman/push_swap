@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 13:10:23 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 16:35:48 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:53:31 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	pr_num(t_print *print)
 	if (print->plus && p >= 0)
 		tmp = strjoin_pro("+", tmp, 2);
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)
@@ -57,7 +57,7 @@ int	pr_bin(t_print *print)
 	if (print->precision != -1)
 		tmp = zeropad(tmp, print->precision, p);
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)
@@ -79,7 +79,7 @@ int	pr_oct(t_print *print)
 
 	p = unsigned_length_mod(print);
 	tmp = ft_utoa_base(p, 8, print);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	new_prec = print->precision;
 	if (print->hash && p && (new_prec == 0 || new_prec == -1 || new_prec == i))
 		new_prec = i + 1;
@@ -88,7 +88,7 @@ int	pr_oct(t_print *print)
 	if ((!p && !print->precision && print->hash))
 		tmp = strjoin_pro("0", tmp, 2);
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)
@@ -113,7 +113,7 @@ int	pr_u(t_print *print)
 	if (print->precision != -1)
 		tmp = zeropad(tmp, print->precision, p);
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)

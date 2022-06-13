@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:59:31 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 18:48:06 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:52:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	pr_str(t_print *print)
 			new[print->precision++] = '\0';
 	}
 	new = insert_width(print, new, 1);
-	i = ft_strlen(new);
+	i = ft_strlen_int(new);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, new, 1);
 	else
@@ -115,10 +115,10 @@ int	pr_ptr(t_print *print)
 	p = 0;
 	p = va_arg(print->ap, unsigned long);
 	tmp = ft_utoa_base(p, 16, print);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	tmp = strjoin_pro("0x", tmp, 2);
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)
@@ -149,7 +149,7 @@ int	pr_hex(t_print *print)
 			tmp[1] -= 32;
 	}
 	tmp = insert_width(print, tmp, 1);
-	i = ft_strlen(tmp);
+	i = ft_strlen_int(tmp);
 	if (print->str != NULL)
 		print->str = strjoin_pro(print->str, tmp, 1);
 	else if (print->str == NULL)
