@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:30:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 17:48:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:51:53 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_asprintf(char **str, const char *format, ...)
 	print->str = ft_strdup("");
 	init_struct(print);
 	va_start(print->ap, format);
-	if (!ft_strlen(format))
+	if (!ft_strlen_int(format))
 		return (0);
 	ret = conv_asprint(print, format);
 	va_end(print->ap);
@@ -98,7 +98,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	print->str = ft_strdup("");
 	init_struct(print);
 	va_start(print->ap, format);
-	if (!ft_strlen(format))
+	if (!ft_strlen_int(format))
 		return (0);
 	print->fd = fd;
 	ret = conv_print(print, format);
@@ -117,7 +117,7 @@ int	ft_printf(const char *format, ...)
 	if (!print)
 		return (0);
 	va_start(print->ap, format);
-	if (!ft_strlen(format))
+	if (!ft_strlen_int(format))
 		return (0);
 	init_struct(print);
 	print->fd = STDOUT_FILENO;
