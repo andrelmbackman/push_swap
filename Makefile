@@ -4,7 +4,7 @@ PUSHNAME = push_swap
 CHECKSRC = src/checker/checker.c
 PUSHSRC = src/push_swap/push_swap.c
 
-OBJS = *.o
+OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
 CFLAGS = -Wall -Werror -Wextra
 
 LIBS = ./libft/libft.a ./ft_printf/libftprintf.a
@@ -22,12 +22,12 @@ $(PUSHNAME): $(LIBS) $(PUSHSRC)
 	gcc $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(LIBS)
 
 $(LIBS):
-	$(MAKE) -C ./libft/ all
-	$(MAKE) -C ./ft_printf/ all
+	@$(MAKE) -C ./libft/ all
+	@$(MAKE) -C ./ft_printf/ all
 
 clean:
-	$(MAKE) -C ./libft/ clean
-	$(MAKE) -C ./ft_printf/ clean
+	@$(MAKE) -C ./libft/ clean
+	@$(MAKE) -C ./ft_printf/ clean
 
 fclean:
 	$(MAKE) -C ./libft fclean
