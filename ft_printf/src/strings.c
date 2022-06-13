@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:12:35 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 12:40:07 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:56:31 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 	char	*str;
 
-	i = ft_strlen(s1);
+	i = ft_strlen_int(s1);
 	str = (char *)malloc((i + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);

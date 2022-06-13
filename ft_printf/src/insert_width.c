@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:06:15 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 15:16:56 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:55:17 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*pad_right(t_print *p, char *new, char *tmp, int start)
 {
 	int		x;
 
-	x = ft_strlen(tmp);
+	x = ft_strlen_int(tmp);
 	if (p->precision != -1 && p->conv != 's' && p->zero)
 		return (tmp);
 	while (start < x)
@@ -67,7 +67,7 @@ static char	*pad_left(t_print *p, char *new, char *tmp, int start)
 	char	pad;
 
 	pad = '0';
-	x = ft_strlen(tmp);
+	x = ft_strlen_int(tmp);
 	new = ft_strcpy(new, (const char *)tmp);
 	if ((!p->zero && p->conv != 'd' && p->conv != 'i' && p->conv != 'f') || \
 	(!p->zero && !p->minus && !p->p_save))
@@ -125,7 +125,7 @@ char	*insert_width(t_print *p, char *tmp, int free)
 	i = width_start(p, tmp);
 	if (!p->width)
 		return (tmp);
-	if (p->width <= ft_strlen(tmp) && (p->conv != 'd' || p->conv != 'i' || \
+	if (p->width <= ft_strlen_int(tmp) && (p->conv != 'd' || p->conv != 'i' || \
 	p->conv != 'f') && p->width)
 		return (tmp);
 	new = (char *)malloc(p->width + i + 1 * sizeof(char));

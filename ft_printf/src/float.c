@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:30 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/28 14:22:31 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:53:50 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	pr_float(t_print *p)
 	nbr_str = after_decimal(p, nbr_str, num, whole);
 	nbr_str = float_signs(p, nbr_str, save);
 	nbr_str = fl_width(p, nbr_str);
-	ret = ft_strlen((const char *)nbr_str);
+	ret = ft_strlen_int((const char *)nbr_str);
 	if (p->str != NULL)
 		p->str = strjoin_pro(p->str, nbr_str, 1);
 	else if (p->str == NULL)

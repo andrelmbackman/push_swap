@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:49:35 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/28 13:21:24 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:57:38 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strchr(const char *s, int c)
 	int	j;
 
 	i = 0;
-	j = ft_strlen(s);
+	j = ft_strlen_int(s);
 	while (i <= j)
 	{
 		if (s[i] == c)
@@ -59,7 +59,7 @@ char	*strjoin_pro(char *str1, char *str2, int n)
 
 	if (str1 == NULL || str2 == NULL)
 		return (NULL);
-	i = (ft_strlen(str1) + ft_strlen(str2));
+	i = (ft_strlen_int(str1) + ft_strlen_int(str2));
 	str = (char *)malloc((i + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);

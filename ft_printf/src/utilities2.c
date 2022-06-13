@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:11:25 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 15:39:47 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:57:05 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*zeropad(char *str, int total, long long num)
 	int		len;
 	char	*new;
 
-	len = ft_strlen(str);
+	len = ft_strlen_int(str);
 	if (total < len)
 	{
 		if (str[0] == '0')

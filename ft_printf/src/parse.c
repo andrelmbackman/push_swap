@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:30:20 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 19:28:21 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:56:11 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	print_conversion(t_print *p, int bytes)
 	if (p->conv == 'c')
 		p->ret += write(p->fd, p->str, bytes);
 	else
-		p->ret += write(p->fd, p->str, (size_t)ft_strlen(p->str));
+		p->ret += write(p->fd, p->str, (size_t)ft_strlen_int(p->str));
 	ft_strdel(&p->str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:15:34 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 17:56:19 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:55:58 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*fl_pad_right(t_print *p, char *new, char *tmp, int start)
 {
 	int		x;
 
-	x = ft_strlen(tmp);
+	x = ft_strlen_int(tmp);
 	while (start < x)
 	{
 		new[start] = tmp[start];
@@ -70,7 +70,7 @@ static char	*fl_pad_left(t_print *p, char *new, char *tmp, int start)
 	char	pad;
 
 	pad = '0';
-	x = ft_strlen(tmp);
+	x = ft_strlen_int(tmp);
 	new = ft_strcpy(new, (const char *)tmp);
 	if (!p->fl_zero)
 	{

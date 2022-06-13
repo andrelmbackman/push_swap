@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 16:00:34 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 16:32:14 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:50:28 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_strcpy(char *dst, const char *src)
 	return (dst);
 }
 
-int	ft_strlen(const char *s)
+int	ft_strlen_int(const char *s)
 {
 	int	i;
 
