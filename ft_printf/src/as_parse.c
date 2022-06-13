@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:23:59 by abackman          #+#    #+#             */
-/*   Updated: 2022/04/25 15:51:16 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:52:14 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*p_strjoin(char *str, const char *format, int i)
 	int		k;
 	int		l;
 
-	j = ft_strlen(str) + i;
+	j = ft_strlen_int(str) + i;
 	new = (char *)malloc(j + 1 * sizeof(char));
 	if (!new)
 		return (NULL);
