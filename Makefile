@@ -10,8 +10,6 @@ CFLAGS = -Wall -Werror -Wextra
 LIBS = ./libft/libft.a ./ft_printf/libftprintf.a
 INCL = -I ./includes
 
-.PHONY: all clean fclean re
-
 all: $(CHECKNAME) $(PUSHNAME)
 
 
@@ -35,3 +33,5 @@ fclean:
 	/bin/rm $(CHECKNAME) $(PUSHNAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
