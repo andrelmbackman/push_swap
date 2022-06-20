@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-static int	return_status(char *str, int status)
+static int	return_status(int status)
 {
 	if (status < 0)
 	{
@@ -53,12 +53,40 @@ static char	**init_moves(void)
 	return (str);
 }
 
+static int	check_input(char *input, char **valid)
+{
+	int	count;
+
+	count = 0;
+	while (valid[count] != NULL)
+	{
+		if (!ft_strcmp(input, valid[count]))
+			return (1);
+		count++;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
 	char	**moves;
+	char	buf[10];
+	int	count;
 	
 	if (ac < 2)
 		return (1);
 	moves = init_moves();
+	while (1)
+	{
+		read(STDIN_FILENO, &buf, 10);
+		if (!check_input(*av, moves))
+			return (return_status(-1));
+		else
+			make_move(*av, &stack);
+	}
+	if (sorted(stack))
+		return (return_status(0));
+	else
+		return (return_status(1));
 }
