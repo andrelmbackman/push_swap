@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/06/10 15:28:34 by abackman         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:00:01 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,20 @@ typedef enum e_moves
 	RRR,
 }	t_moves;
 
-typedef struct s_tack
+typedef struct s_stack
 {
-	int	*a_stack;
-	int	*b_stack;
-	int	min;
-	int	max;
-	int	elem;
+	int				num;
+	struct s_stack	*next;
 }	t_stack;
+
+typedef struct s_pusha
+{
+	t_stack	*a_stack;
+	t_stack	*b_stack;
+	int		min;
+	int		max;
+	int		a_size;
+	int		b_size;
+}	t_pusha;
 
 #endif
