@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:56:19 by abackman          #+#    #+#             */
-/*   Updated: 2022/06/10 16:57:59 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:44:48 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	if (ac < 2)
+	if (ac < 2 || !av[1][0])
 		return (1);
 	return (0);
 }
