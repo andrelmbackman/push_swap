@@ -1,8 +1,9 @@
 CHECKNAME = checker
 PUSHNAME = push_swap
 
-CHECKSRC = src/checker/checker.c
+CHECKSRC = src/checker/checker.c src/checker/check_input.c
 PUSHSRC = src/push_swap/push_swap.c
+ALLSRC = src/utilities/moves.c src/utilities/stacks.c
 
 OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
 CFLAGS = -Wall -Werror -Wextra
@@ -14,7 +15,7 @@ all: $(CHECKNAME) $(PUSHNAME)
 
 
 $(CHECKNAME): $(LIBS) $(CHECKSRC)
-	gcc $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(LIBS)
+	gcc $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
 
 $(PUSHNAME): $(LIBS) $(PUSHSRC)
 	gcc $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(LIBS)
