@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/06 18:39:21 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:36:32 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	return_status(int status)
 	}
 	else
 	{
-		ft_putstr_fd("KO\n", STDERR_FILENO);
+		ft_putstr_fd("KO\n", STDOUT_FILENO);
 		return (0);
 	}
 }
@@ -59,8 +59,8 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (1);
-	stacks = (t_pusha *)malloc(sizeof(t_pusha));
-	if (!stacks)
+	stacks = init_stacks();
+	if (stacks == NULL)
 		return(return_status(-1));
 	valid_moves = ft_strsplit("sa sb ss pa pb ra rb rr rra rrb rrr", (char)32);
 	if (valid_moves == NULL)
@@ -69,4 +69,5 @@ int	main(int ac, char **av)
 		return (return_status(-1));
 	//return (check_moves(valid_moves, stacks));
 	return (check_stacks(stacks));
+	//return (0);
 }
