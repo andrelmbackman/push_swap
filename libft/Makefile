@@ -10,6 +10,24 @@ ft_strncat.c ft_strsub.c ft_isalpha.c ft_lstiter.c ft_memmove.c ft_putstr.c\
 ft_strequ.c ft_strncmp.c ft_strtrim.c ft_isascii.c ft_lstmap.c ft_memset.c\
 ft_putstr_fd.c ft_striter.c ft_strncpy.c ft_tolower.c ft_isdigit.c ft_lstnew.c\
 ft_primenbr.c ft_strcat.c ft_striteri.c ft_strnequ.c ft_toupper.c
+PFOBJS = ./ft_printf/conversion.o\
+	./ft_printf/conversion2.o\
+	./ft_printf/flags.o\
+	./ft_printf/insert_width.o\
+	./ft_printf/itoa_base.o\
+	./ft_printf/length.o\
+	./ft_printf/lib1.o\
+	./ft_printf/numbers.o\
+	./ft_printf/as_parse.o\
+	./ft_printf/parse.o\
+	./ft_printf/strings.o\
+	./ft_printf/ultoa_base.o\
+	./ft_printf/utilities.o\
+	./ft_printf/utilities2.o\
+	./ft_printf/float.o\
+	./ft_printf/rounding.o\
+	./ft_printf/colour.o\
+	./ft_printf/ft_printf.o
 OBJS = $(SRC:.c=.o)
 WRNG = -Wall -Werror -Wextra
 
@@ -18,14 +36,17 @@ WRNG = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
+	@make -C ft_printf
 	gcc $(WRNG) -c $(SRC)
-	ar rc $(NAME) *.o
+	ar rc $(NAME) *.o $(PFOBJS)
 	ranlib $(NAME)
 
 clean:
+	@make -C ft_printf clean
 	/bin/rm -f $(OBJS)
 
 fclean: clean
+	@make -C ft_printf fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all
