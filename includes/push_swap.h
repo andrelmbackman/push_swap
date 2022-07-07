@@ -6,14 +6,14 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/06 18:38:55 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:34:46 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-# include "../ft_printf/includes/ft_printf.h"
+# include "../libft/ft_printf/includes/ft_printf.h"
 # define ERROR -1
 # define KO 0
 # define OK 1
@@ -54,5 +54,6 @@ int		check_stacks(t_pusha *stacks);
 int		free_stacks(t_pusha *stacks, int status);
 int		check_ints(t_pusha *stacks, int ac, char **input);
 t_stack	*add_stack(int value);
+t_pusha	*init_stacks(void);
 
 #endif
