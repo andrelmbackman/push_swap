@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:30 by abackman          #+#    #+#             */
-/*   Updated: 2022/06/13 14:53:50 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/08 14:51:51 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	pr_float(t_print *p)
 	char				*nbr_str;
 	long double			num;
 	unsigned long long	whole;
-	int				ret;
-	long double		save;
+	int					ret;
+	long double			save;
 
 	ret = 0;
 	num = float_length_mod(p);
