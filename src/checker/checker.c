@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/07 16:36:32 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:50:58 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 	if (valid_moves == NULL)
 		return(return_status(-1));
 	if (check_ints(stacks, ac, av) == -1)
-		return (return_status(-1));
+		return (-1);
 	//return (check_moves(valid_moves, stacks));
 	return (check_stacks(stacks));
 	//return (0);
