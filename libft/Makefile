@@ -9,7 +9,7 @@ ft_strstr.c ft_isalnum.c ft_lstdelone.c ft_memdel.c ft_putnbr_fd.c ft_strdup.c\
 ft_strncat.c ft_strsub.c ft_isalpha.c ft_lstiter.c ft_memmove.c ft_putstr.c\
 ft_strequ.c ft_strncmp.c ft_strtrim.c ft_isascii.c ft_lstmap.c ft_memset.c\
 ft_putstr_fd.c ft_striter.c ft_strncpy.c ft_tolower.c ft_isdigit.c ft_lstnew.c\
-ft_primenbr.c ft_strcat.c ft_striteri.c ft_strnequ.c ft_toupper.c
+ft_primenbr.c ft_strcat.c ft_striteri.c ft_strnequ.c ft_toupper.c ft_atoll.c
 PFOBJS = ./ft_printf/conversion.o\
 	./ft_printf/conversion2.o\
 	./ft_printf/flags.o\
