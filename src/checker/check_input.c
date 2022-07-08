@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/07 16:44:27 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:49:51 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,27 @@
 static int	validate_ints(t_pusha *stacks, char *input)
 {
 	long long	tmp;
-	t_stack		*head;
+	t_stack		*tmpstack;
 
-	tmp = ft_atoi(input);
-	head = stacks->a_stack;
+	tmp = ft_atoll(input);
+	tmpstack = stacks->a_stack;
+	//ft_printf("Arg after ft_atoll: %ld\n", tmp);
 	if (!ft_isdigit(input[0]) && input[0] != '-')
 		return (free_stacks(stacks, ERROR));
 	else if (tmp > 2147483647 || tmp < -2147483648)
 		return (free_stacks(stacks, ERROR));
-	while (stacks->a_stack)
+	while (tmpstack)
 	{
-		if (tmp == stacks->a_stack->num)
+		if ((int)tmp == tmpstack->num)
 			return (free_stacks(stacks, ERROR));
-		stacks->a_stack = stacks->a_stack->next;
+		tmpstack = tmpstack->next;
 	}
-	stacks->a_stack = add_stack((int)tmp);
-	ft_printf("args: %li\n", tmp);
-	if (stacks->a_stack == NULL)
+	if (!add_stack(&stacks->a_stack, (int)tmp))
 		return (free_stacks(stacks, ERROR));
-	stacks->a_stack = head;
+	else
+		stacks->a_size++;
+	//ft_printf("args: %li\n", tmp);
+	//stacks->a_stack = head;
 	return (1);
 }
 
