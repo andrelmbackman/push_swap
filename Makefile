@@ -15,10 +15,10 @@ all: $(CHECKNAME) $(PUSHNAME)
 
 
 $(CHECKNAME): $(LIBS) $(CHECKSRC)
-	gcc -g3 $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
+	gcc $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
 
 $(PUSHNAME): $(LIBS) $(PUSHSRC)
-	gcc -g3 $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(LIBS)
+	gcc $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(LIBS)
 
 $(LIBS):
 	@$(MAKE) -C ./libft/ all
