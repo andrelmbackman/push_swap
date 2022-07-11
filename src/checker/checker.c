@@ -67,7 +67,6 @@ int	main(int ac, char **av)
 		return(return_status(-1));
 	if (check_ints(stacks, ac, av) == -1)
 		return (-1);
-	//return (check_moves(valid_moves, stacks));
-	return (check_stacks(stacks));
-	//return (0);
+	moves_check(valid_moves, stacks);
+	return (0);
 }
