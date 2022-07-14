@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:37:42 by abackman          #+#    #+#             */
-/*   Updated: 2021/12/16 17:56:51 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/14 13:31:41 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	int	ft_addline(char **line, char **buf, const int fd)
 	return (1);
 }
 
-static char	*strjoin_pro(char *str1, char str2[])
+static char	*strjoin_plus(char *str1, char str2[])
 {
 	size_t	i;
 	size_t	j;
@@ -89,7 +89,7 @@ int	get_next_line(const int fd, char **line)
 	{
 		if (buf[fd])
 		{
-			tmp2 = strjoin_pro(buf[fd], tmp);
+			tmp2 = strjoin_plus(buf[fd], tmp);
 			buf[fd] = tmp2;
 		}
 		else
