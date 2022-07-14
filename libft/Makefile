@@ -44,7 +44,7 @@ $(NAME):
 
 clean:
 	@make -C ft_printf clean
-	/bin/rm -f $(OBJS)
+	/bin/rm -f $(OBJS) get_next_line.o
 
 fclean: clean
 	@make -C ft_printf fclean
