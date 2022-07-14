@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/08 15:48:57 by abackman         ###   ########.fr       */
+/*   Updated: 2022/07/14 18:22:12 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,37 @@
 int	free_stacks(t_pusha *stacks, int status)
 {
 	t_stack	*tmp;
+	t_stack	*head;
 
-	while (stacks->a_stack != NULL)
+	head = stacks->a_stack->next;
+	while (head != stacks->a_stack)
 	{
-		tmp = stacks->a_stack->next;
-		free(stacks->a_stack);
-		stacks->a_stack = NULL;
-		stacks->a_stack = tmp;
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
-	while (stacks->b_stack != NULL)
+	free(head);
+	head = stacks->b_stack->next;
+	while (head != stacks->b_stack)
 	{
-		tmp = stacks->b_stack->next;
-		free(stacks->b_stack);
-		stacks->b_stack = NULL;
-		stacks->b_stack = tmp;
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
+	free(head);
 	free(stacks);
 	stacks = NULL;
 	//system("leaks checker");
 	return (return_status(status));
+}
+
+static int	first_stack(t_stack **head, t_stack *new)
+{
+	new->top = 1;
+	new->next = new;
+	new->prev = new;
+	*head = new;
+	return (1);
 }
 
 int	add_stack(t_stack **head, int value)
@@ -42,19 +54,17 @@ int	add_stack(t_stack **head, int value)
 	t_stack	*last;
 
 	//ft_printf("\nadd_stack\n");
-	last = *head;
+	last = (*head)->prev;
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return (0);
 	new->num = value;
-	new->next = NULL;
 	if (*head == NULL)
-	{
-		*head = new;
-		return (1);
-	}
-	while (last->next != NULL)
-		last = last->next;
+		return (first_stack(head, new));
+	new->next = *head;
+	(*head)->prev = new;
+	new->top = 0;
+	new->prev = last;
 	last->next = new;
 	return (1);
 }
