@@ -1,9 +1,11 @@
 CHECKNAME = checker
 PUSHNAME = push_swap
 
-CHECKSRC = src/checker/checker.c src/checker/check_input.c
+CHECKSRC = src/checker/checker.c src/checker/args_check.c\
+src/checker/moves_check.c
 PUSHSRC = src/push_swap/push_swap.c
-ALLSRC = src/utilities/moves.c src/utilities/stacks.c
+ALLSRC = src/utilities/moves1.c src/utilities/moves2.c\
+src/utilities/moves3.c src/utilities/stacks.c
 
 OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
 CFLAGS = -Wall -Werror -Wextra
