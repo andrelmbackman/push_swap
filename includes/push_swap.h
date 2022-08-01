@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/14 16:40:08 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:12:19 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,6 @@
 # define ERROR -1
 # define KO 0
 # define OK 1
-
-static const t_able	g_pushswap[12] = {
-	exec_sa,
-	exec_sb,
-	exec_ss,
-	exec_pa,
-	exec_pb,
-	exec_ra,
-	exec_rb,
-	exec_rr,
-	exec_rra,
-	exec_rrb,
-	exec_rrr,
-	NULL
-};
 
 typedef enum e_moves
 {
@@ -64,11 +49,13 @@ typedef struct s_pusha
 	int		max;
 	int		a_size;
 	int		b_size;
+	int		empty;
 }	t_pusha;
 
 /*
 ** Functions for executing the moves
 */
+
 int	exec_sa(t_pusha *stacks);
 int	exec_sb(t_pusha *stacks);
 int	exec_ss(t_pusha *stacks);
@@ -80,6 +67,23 @@ int	exec_rr(t_pusha *stacks);
 int	exec_rra(t_pusha *stacks);
 int	exec_rrb(t_pusha *stacks);
 int	exec_rrr(t_pusha *stacks);
+
+typedef int	(*t_pushtable)(t_pusha *stacks);
+
+static const t_pushtable	g_pushtable[12] = {
+	exec_sa,
+	exec_sb,
+	exec_ss,
+	exec_pa,
+	exec_pb,
+	exec_ra,
+	exec_rb,
+	exec_rr,
+	exec_rra,
+	exec_rrb,
+	exec_rrr,
+	NULL
+};
 
 /*
 ** Other functions
