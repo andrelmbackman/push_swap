@@ -6,38 +6,11 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/14 18:22:12 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:49:00 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-int	free_stacks(t_pusha *stacks, int status)
-{
-	t_stack	*tmp;
-	t_stack	*head;
-
-	head = stacks->a_stack->next;
-	while (head != stacks->a_stack)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	free(head);
-	head = stacks->b_stack->next;
-	while (head != stacks->b_stack)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	free(head);
-	free(stacks);
-	stacks = NULL;
-	//system("leaks checker");
-	return (return_status(status));
-}
 
 static int	first_stack(t_stack **head, t_stack *new)
 {
@@ -53,19 +26,21 @@ int	add_stack(t_stack **head, int value)
 	t_stack	*new;
 	t_stack	*last;
 
-	//ft_printf("\nadd_stack\n");
-	last = (*head)->prev;
+	//ft_printf("Are we adding a stack?\n");
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return (0);
 	new->num = value;
 	if (*head == NULL)
 		return (first_stack(head, new));
+	last = (*head)->prev;
 	new->next = *head;
 	(*head)->prev = new;
-	new->top = 0;
+	new->top = 1;
 	new->prev = last;
 	last->next = new;
+	(*head)->top = 0;
+	(*head) = new;
 	return (1);
 }
 
@@ -99,5 +74,6 @@ t_pusha	*init_stacks(void)
 	stacks->b_size = 0;
 	stacks->min = 0;
 	stacks->max = 0;
+	stacks->empty = 1;
 	return (stacks);
 }
