@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/14 15:26:03 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/01 14:59:21 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	exec_move(t_pusha *stacks, int status)
 {
 	if (stacks == NULL || status == -1)
 		return (-1);
-	return (g_pushswap[status](stacks));
+	return (g_pushtable[status](stacks));
 }
 
 static int	valid_move(char *buf, char **valid)
