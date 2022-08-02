@@ -6,39 +6,44 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/01 18:50:18 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/02 15:28:49 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+static int	del_stack(t_stack *stack)
+{
+	t_stack	*tmp;
+	t_stack	*next;
+	t_stack	*head;
+
+	if (stack == NULL)
+		return (0);
+	tmp = stack;
+	head = stack;
+	while (tmp->next != head)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = NULL;
+		tmp = next;
+	}
+	free(tmp);
+	tmp = NULL;
+	return (1);
+}
 
 int	free_stacks(t_pusha *stacks, int status)
 {
-	t_stack	*tmp;
-	t_stack	*head;
-
-	head = stacks->a_stack->next;
-	while (head != stacks->a_stack && head != NULL)
+	if (stacks->a_size && stacks->a_stack != NULL)
+		del_stack(stacks->a_stack);
+	if (stacks->b_size && stacks->b_stack != NULL)
+		del_stack(stacks->b_stack);
+	//ft_printf("\nFreeing staxx\n");
+	if (stacks)
 	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
+		free(stacks);
+		stacks = NULL;
 	}
-	if (head != NULL)
-		free(head);
-	if (stacks->b_stack->next)
-		head = stacks->b_stack->next;
-	ft_printf("\nFreeing staxx\n");
-	while (head != stacks->b_stack && head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-	if (head != NULL)
-		free(head);
-	free(stacks);
-	stacks = NULL;
-	//system("leaks checker");
 	return (return_status(status));
 }
