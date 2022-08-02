@@ -6,13 +6,63 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/01 18:28:29 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:04:01 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+static int	check_dup(t_stack *stack, long long num)
+{
+	t_stack	*tmp;
+	t_stack	*head;
+
+	tmp = stack;
+	head = stack;
+	while (tmp->next != head && tmp != NULL)
+	{
+		if ((int)num == tmp->num)
+			return (-1);
+		tmp = tmp->next;
+	}
+	if (tmp != NULL)
+	{
+		if (num == tmp->num)
+			return (-1);
+	}
+	//stack = head;
+	return (1);
+}
+
 static int	validate_ints(t_pusha *stacks, char *input)
+{
+	long long	tmpnum;
+	int			ret;
+	t_stack		*head;
+
+	tmpnum = ft_atoll(input);
+	ret = 0;
+	head = stacks->a_stack;
+	//ft_printf("Arg after ft_atoll: %ld\n", tmpnum);
+	if (!ft_isdigit(input[0]) && input[0] != '-')
+		return (free_stacks(stacks, ERROR));
+	else if (tmpnum > 2147483647 || tmpnum < -2147483648)
+		return (free_stacks(stacks, ERROR));
+	if (!stacks->empty && stacks->a_stack != NULL)
+		ret = check_dup(stacks->a_stack, tmpnum);
+	if (ret == -1)
+		return (free_stacks(stacks, ERROR));
+	if (!add_stack(&stacks->a_stack, (int)tmpnum))
+		return (free_stacks(stacks, ERROR));
+	else
+		stacks->a_size++;
+	stacks->empty = 0;
+	//ft_printf("\narg: %li\na_stack: %d\ntop: %d\n\n", tmpnum, stacks->a_stack->num, stacks->a_stack->top);
+	//stacks->a_stack = head;
+	return (1);
+}
+
+/* static int	validate_ints(t_pusha *stacks, char *input)
 {
 	long long	tmpnum;
 	t_stack		*tmpstack;
@@ -44,7 +94,7 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	ft_printf("args: %li\n", tmpnum);
 	//stacks->a_stack = head;
 	return (1);
-}
+} */
 
 int	check_ints(t_pusha *stacks, int ac, char **input)
 {
