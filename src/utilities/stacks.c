@@ -6,22 +6,43 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/01 18:49:00 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:10:12 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	first_stack(t_stack **head, t_stack *new)
+int	first_stack(t_stack **head, t_stack *new)
 {
 	new->top = 1;
 	new->next = new;
 	new->prev = new;
 	*head = new;
+	//ft_printf("\nADDING FIRST STACK\n");
 	return (1);
 }
 
 int	add_stack(t_stack **head, int value)
+{
+	t_stack	*new;
+	t_stack	*last;
+
+	//ft_printf("Are we adding a stack?\n");
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		return (0);
+	new->num = value;
+	if (*head == NULL)
+		return (first_stack(head, new));
+	last = (*head)->prev;
+	last->next = new;
+	new->prev = last;
+	new->next = (*head);
+	(*head)->prev = new;
+	new->top = 0;
+	return (1);
+}
+/* int	add_stack(t_stack **head, int value)
 {
 	t_stack	*new;
 	t_stack	*last;
@@ -42,22 +63,32 @@ int	add_stack(t_stack **head, int value)
 	(*head)->top = 0;
 	(*head) = new;
 	return (1);
-}
+} */
 
 int	check_stacks(t_pusha *stacks)
 {
 	t_stack	*head;
+	t_stack	*tmp;
 
 	head = stacks->a_stack;
-	if (stacks->b_size != 0)
+	tmp = head;
+	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (free_stacks(stacks, KO));
-	ft_printf("Checking stack a: %d\n", stacks->a_stack->num);
-	while (stacks->a_stack->next != NULL)
+	//ft_printf("Checking stack a: %d\nsize: %d\n\n", stacks->a_stack->num, stacks->a_size);
+	while (tmp->next != head && stacks->a_size > 1)
 	{
-		if (stacks->a_stack->next->num < stacks->a_stack->num)
+		if (tmp->num > tmp->next->num)
+		{
+			//ft_printf("\nnumber is larger than the next\n");
 			return (free_stacks(stacks, KO));
-		stacks->a_stack = stacks->a_stack->next;
+		}
+		tmp = tmp->next;
 	}
+	 if (tmp->num < tmp->next->num)
+	 {
+		//ft_printf("\nlast num is smaller than the next\n");
+		return (free_stacks(stacks, KO));
+	 }
 	return (free_stacks(stacks, OK));
 }
 
