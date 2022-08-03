@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:35:38 by abackman          #+#    #+#             */
-/*   Updated: 2021/11/25 15:54:12 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:36:39 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned long	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
