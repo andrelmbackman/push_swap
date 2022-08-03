@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/08 15:50:58 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:46:42 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,22 @@ int	return_status(int status)
 int	main(int ac, char **av)
 {
 	t_pusha		*stacks;
-	char		**valid_moves;
+	char		**moves;
+	int			ret;
 
+	ret = 0;
 	if (ac < 2)
 		return (1);
 	stacks = init_stacks();
 	if (stacks == NULL)
 		return(return_status(-1));
-	valid_moves = ft_strsplit("sa sb ss pa pb ra rb rr rra rrb rrr", (char)32);
-	if (valid_moves == NULL)
+	moves = ft_strsplit("sa sb ss pa pb ra rb rr rra rrb rrr", (char)32);
+	if (moves == NULL)
 		return(return_status(-1));
+	stacks->valid_moves = moves;
 	if (check_ints(stacks, ac, av) == -1)
 		return (-1);
-	moves_check(valid_moves, stacks);
+	ret = moves_check(stacks);
+	//ft_free_arr(stacks->valid_moves, (size_t)11);
 	return (0);
 }
