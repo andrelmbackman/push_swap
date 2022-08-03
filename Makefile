@@ -5,7 +5,8 @@ CHECKSRC = src/checker/checker.c src/checker/args_check.c\
 src/checker/moves_check.c
 PUSHSRC = src/push_swap/push_swap.c
 ALLSRC = src/utilities/moves1.c src/utilities/moves2.c\
-src/utilities/moves3.c src/utilities/stacks.c src/utilities/free_stacks.c
+src/utilities/moves3.c src/utilities/stacks.c src/utilities/free_stacks.c\
+src/utilities/moves_helpers.c
 
 OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
 CFLAGS = -Wall -Werror -Wextra
