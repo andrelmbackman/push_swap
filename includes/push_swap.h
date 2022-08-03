@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/02 18:11:09 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:31:14 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_pusha
 {
 	t_stack	*a_stack;
 	t_stack	*b_stack;
+	char	**valid_moves;
 	int		min;
 	int		max;
 	int		a_size;
@@ -92,10 +93,13 @@ static const t_pushtable	g_pushtable[12] = {
 int		return_status(int status);
 int		check_stacks(t_pusha *stacks);
 int		free_stacks(t_pusha *stacks, int status);
-int		moves_check(char **valid_moves, t_pusha *stacks);
+int		moves_check(t_pusha *stacks);
 int		check_ints(t_pusha *stacks, int ac, char **input);
 int		add_stack(t_stack **head, int value);
 int		first_stack(t_stack **head, t_stack *new);
+void	add_head(t_stack *stack, t_stack *new);
+void	rm_head(t_stack *stack);
+void	add_to_empty(t_stack *stack, t_stack *new);
 t_pusha	*init_stacks(void);
 
 #endif
