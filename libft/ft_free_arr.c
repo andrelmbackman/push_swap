@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:56:43 by abackman          #+#    #+#             */
-/*   Updated: 2021/12/02 11:27:43 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:56:49 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 void	*ft_free_arr(char **str, size_t size)
 {
-	while (size >= 0)
+	size_t	i;
+
+	i = 0;
+	if (str == NULL)
+		return (NULL);
+	while (i < size)
 	{
-		ft_bzero(str[size], ft_strlen(str[size]));
-		free(str[size]);
-		size--;
+		if (str[size] == NULL)
+			break ;
+		else
+		{
+			ft_bzero(str[size], ft_strlen((const char *)str[size]));
+			free(str[size]);
+			//str[size] = NULL;
+		}
+		i++;
 	}
 	free(str);
 	return (NULL);
