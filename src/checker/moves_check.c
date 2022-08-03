@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/01 14:59:21 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:48:25 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	valid_move(char *buf, char **valid)
 	return (-1);
 }
 
-int	moves_check(char **valid_moves, t_pusha *stacks)
+int	moves_check(t_pusha *stacks)
 {
 	int		status;
 	char	*buf;
@@ -43,17 +43,19 @@ int	moves_check(char **valid_moves, t_pusha *stacks)
 	{
 		if (!get_next_line((const int)STDIN_FILENO, &buf))
 			break ;
-		status = valid_move(buf, valid_moves);
+		status = valid_move(buf, stacks->valid_moves);
 		ft_strdel(&buf);
 		if (status == -1)
 		{
-			ft_free_arr(valid_moves, (size_t)10);
-			return (free_stacks(stacks, -1));
+			ft_free_arr(stacks->valid_moves, (size_t)11);
+			return (free_stacks(stacks, ERROR));
 		}
 		else
 			exec_move(stacks, status);
 	}
-	return (check_stacks(stacks));	
+	if (stacks->valid_moves)
+		ft_free_arr(stacks->valid_moves, (size_t)11);
+	return (check_stacks(stacks));
 }
 
 /* int	moves_check(char **valid_moves, t_pusha *stacks)
