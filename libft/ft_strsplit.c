@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 11:38:48 by abackman          #+#    #+#             */
-/*   Updated: 2021/11/26 18:03:06 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:54:19 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*add_nextword(const char *s, char c)
 char	**ft_strsplit(const char *s, char c)
 {
 	char	**str;
-	size_t	words;	
+	size_t	words;
 	size_t	k;
 
 	if (s == NULL)
