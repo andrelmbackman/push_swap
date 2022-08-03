@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/02 18:04:01 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:27:06 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 	int		ret;
 	int		count;
 
+	//t_stack *check;
+
 	ret = 0;
 	count = 1;
 	while (count < ac)
@@ -111,5 +113,12 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 			return (ret);
 		count++;
 	}
+/* 	check = stacks->a_stack;
+	while (check->next != stacks->a_stack)
+	{
+		ft_printf("num: %d\n", check->num);
+		check = check->next;
+	}
+	ft_printf("num: %d\n", check->num); */
 	return (1);
 }
