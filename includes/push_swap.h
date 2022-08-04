@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 16:31:14 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/04 15:37:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ERROR -1
 # define KO 0
 # define OK 1
+# define NOMESSAGE 10
 
 /* typedef enum e_moves
 {
@@ -97,6 +98,9 @@ int		moves_check(t_pusha *stacks);
 int		check_ints(t_pusha *stacks, int ac, char **input);
 int		add_stack(t_stack **head, int value);
 int		first_stack(t_stack **head, t_stack *new);
+int		sort_stacks(t_pusha *stacks);
+int		sort_small(t_pusha *stacks);
+int		sorted(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	rm_head(t_stack *stack);
 void	add_to_empty(t_stack *stack, t_stack *new);
