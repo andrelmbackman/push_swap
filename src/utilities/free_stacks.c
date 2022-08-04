@@ -6,11 +6,31 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/02 15:28:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:36:53 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	return_status(int status)
+{
+	if (status < 0)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		return (-1);
+	}
+	else if (status > 0)
+	{
+		ft_putstr_fd("OK\n", STDOUT_FILENO);
+		return (1);
+	}
+	else
+	{
+		ft_putstr_fd("KO\n", STDOUT_FILENO);
+		return (0);
+	}
+}
+
 static int	del_stack(t_stack *stack)
 {
 	t_stack	*tmp;
@@ -45,5 +65,8 @@ int	free_stacks(t_pusha *stacks, int status)
 		free(stacks);
 		stacks = NULL;
 	}
-	return (return_status(status));
+	if (status >= -1 && status <= 1)
+		return (return_status(status));
+	else
+		return (0);
 }
