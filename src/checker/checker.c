@@ -6,30 +6,11 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 13:46:42 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:37:04 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-int	return_status(int status)
-{
-	if (status < 0)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		return (-1);
-	}
-	else if (status > 0)
-	{
-		ft_putstr_fd("OK\n", STDOUT_FILENO);
-		return (1);
-	}
-	else
-	{
-		ft_putstr_fd("KO\n", STDOUT_FILENO);
-		return (0);
-	}
-}
 
 /* static int	check_moves(const char **valid_moves, t_pusha *stacks)
 {
