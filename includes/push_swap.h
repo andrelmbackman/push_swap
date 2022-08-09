@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/04 15:37:52 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:29:10 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_pusha
 	int		a_size;
 	int		b_size;
 	int		empty;
+	int		print;
 }	t_pusha;
 
 /*
