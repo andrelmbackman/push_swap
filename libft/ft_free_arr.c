@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:56:43 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 13:56:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 15:12:41 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	*ft_free_arr(char **str, size_t size)
 		return (NULL);
 	while (i < size)
 	{
-		if (str[size] == NULL)
-			break ;
-		else
+		if (str[size] != NULL)
 		{
 			ft_bzero(str[size], ft_strlen((const char *)str[size]));
 			free(str[size]);
