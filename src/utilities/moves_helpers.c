@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:14:55 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 17:03:30 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 13:46:06 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ void	add_head(t_stack *stack, t_stack *new)
 
 void	add_to_empty(t_stack *stack, t_stack *new)
 {
-	t_stack	*head;
+	/* t_stack	*head;
 
 	//ft_printf("\nadding to empty,\nnum = %d\nstack = %p\n\n", new->num, stack);
 	head = new;
 	head->next = head;
 	head->prev = head;
-	stack = head;
+	stack = head; */
+	stack = new;
+	stack->next = stack;
+	stack->prev = stack;
 	if (new->next == new)
 		new = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 14:27:06 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:13:05 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static int	check_dup(t_stack *stack, long long num)
 {
 	t_stack	*tmp;
-	t_stack	*head;
+	//t_stack	*head;
 
 	tmp = stack;
-	head = stack;
-	while (tmp->next != head && tmp != NULL)
+	//head = stack;
+	while (tmp->next != stack && tmp != NULL)
 	{
 		if ((int)num == tmp->num)
 			return (-1);
@@ -30,7 +30,6 @@ static int	check_dup(t_stack *stack, long long num)
 		if (num == tmp->num)
 			return (-1);
 	}
-	//stack = head;
 	return (1);
 }
 
@@ -38,11 +37,11 @@ static int	validate_ints(t_pusha *stacks, char *input)
 {
 	long long	tmpnum;
 	int			ret;
-	t_stack		*head;
+	//t_stack		*head;
 
 	tmpnum = ft_atoll(input);
 	ret = 0;
-	head = stacks->a_stack;
+	//head = stacks->a_stack;
 	//ft_printf("Arg after ft_atoll: %ld\n", tmpnum);
 	if (!ft_isdigit(input[0]) && input[0] != '-')
 		return (free_stacks(stacks, ERROR));

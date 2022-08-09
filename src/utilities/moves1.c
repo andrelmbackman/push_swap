@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:43:00 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 16:40:06 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:03:22 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	exec_sa(t_pusha *stacks)
 	tmp = stacks->a_stack->num;
 	stacks->a_stack->num = stacks->a_stack->next->num;
 	stacks->a_stack->next->num = tmp;
+	if (stacks->print)
+		write(1, "sa\n", 3);
 	return (1);
 }
 
@@ -33,13 +35,32 @@ int	exec_sb(t_pusha *stacks)
 	tmp = stacks->b_stack->num;
 	stacks->b_stack->num = stacks->b_stack->next->num;
 	stacks->b_stack->next->num = tmp;
+	if (stacks->print)
+		write(1, "sb\n", 3);
 	return (1);
 }
 
 int	exec_ss(t_pusha *stacks)
 {
+	int	write_move;
+
+	write_move = 0;
+	if (stacks->print)
+	{
+		write_move = 1;
+		stacks->print = 0;
+	}
 	if (!exec_sa(stacks) || !exec_sb(stacks))
+	{
+		if (write_move)
+			stacks->print = 1;
 		return (0);
+	}
+	if (write_move)
+	{
+		write(1, "ss\n", 3);
+		stacks->print = 1;
+	}
 	return (1);
 }
 
@@ -82,6 +103,8 @@ int	exec_pa(t_pusha *stacks)
 	ft_printf("b: %11d\nb->next: %5d\n\n", stacks->b_stack->num, stacks->b_stack->next->num); */
 	if (nullify)
 		stacks->b_stack = NULL;
+	if (stacks->print)
+		write(1, "pa\n", 3);
 	return (1);
 }
 
@@ -125,5 +148,7 @@ int	exec_pb(t_pusha *stacks)
 	ft_printf("b: %11d\n\n", stacks->b_stack->num); */
 	 if (nullify)
 		stacks->a_stack = NULL;
+	if (stacks->print)
+		write(1, "pb\n", 3);
 	return (1);
 }

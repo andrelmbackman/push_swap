@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/02 18:10:12 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:33:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	check_stacks(t_pusha *stacks)
 	{
 		if (tmp->num > tmp->next->num)
 		{
-			//ft_printf("\nnumber is larger than the next\n");
+			ft_printf("\nnumber is larger than the next\n");
 			return (free_stacks(stacks, KO));
 		}
 		tmp = tmp->next;
@@ -106,5 +106,6 @@ t_pusha	*init_stacks(void)
 	stacks->min = 0;
 	stacks->max = 0;
 	stacks->empty = 1;
+	stacks->print = 0;
 	return (stacks);
 }
