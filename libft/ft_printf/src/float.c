@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:30 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/08 14:51:51 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:56:26 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char *buf)
 	int	i;
 
 	i = 0;
-	if (tmp < 0)
-		tmp *= -1;
 	while (tmp > 0)
 	{
 		buf[i++] = tmp % 10 + '0';

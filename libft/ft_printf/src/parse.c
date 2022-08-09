@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:30:20 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/07 12:23:27 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:54:40 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	print_conversion(t_print *p, int bytes)
 {
-	int	ret;
-
-	ret = 0;
 	if (p->conv == 'c')
 		p->ret += write(p->fd, p->str, bytes);
 	else
