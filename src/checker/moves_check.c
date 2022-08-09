@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/03 13:48:25 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/09 15:20:15 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int	moves_check(t_pusha *stacks)
 		else
 			exec_move(stacks, status);
 	}
-	if (stacks->valid_moves)
-		ft_free_arr(stacks->valid_moves, (size_t)11);
+	//ft_printf("\n\tBroke out of the args check loop\n%s\n", stacks->valid_moves[11]);
+	//if (stacks->valid_moves)
+	//ft_free_arr(stacks->valid_moves, (size_t)11);
 	return (check_stacks(stacks));
 }
 
