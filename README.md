@@ -12,3 +12,5 @@ optimized data sorting."
 - [ ] for size 5, find index of smallest, find if you should ra or rra, then pb.
 do the same with the next smallest, pb. Then solve 3, then pa pa. (max 10), perfect = 8
 (find the minimum move to move the two smallest to b, then see if ss is an option?)
+
+- make a script that uses curl to get 500 random ints
