@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/09 14:13:05 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:23:45 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,25 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	//stacks->a_stack = head;
 	return (1);
 } */
+static int	validate_string(t_pusha *stacks, char *str)
+{
+	int	ret;
+	int	i;
+
+	ret = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] != '-' && str[i] != '+' && \
+		!ft_isdigit((int)str[i]))
+			i++;
+		ret = validate_ints(stacks, &str[i]);
+		while (str[i] && (str[i] == '-' || str[i] == '+' || \
+		ft_isdigit((int)str[i])))
+			i++;
+	}
+	return (ret);
+}
 
 int	check_ints(t_pusha *stacks, int ac, char **input)
 {
@@ -104,12 +123,19 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 
 	ret = 0;
 	count = 1;
+	stacks->min = 2147483647;
+	stacks->max = -2147483648;
 	while (count < ac)
 	{
-		ret = validate_ints(stacks, input[count]);
+		//ret = validate_ints(stacks, input[count]);
+		ret = validate_string(stacks, input[count]);
 		//ft_printf("validate_ints return: %d\n", ret);
 		if (ret == -1)
 			return (ret);
+		if (stacks->a_stack->prev->num > stacks->max)
+			stacks->max = stacks->a_stack->prev->num;
+		if (stacks->a_stack->prev->num < stacks->min)
+			stacks->min = stacks->a_stack->prev->num;
 		count++;
 	}
 /* 	check = stacks->a_stack;
