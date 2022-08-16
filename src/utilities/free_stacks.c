@@ -6,12 +6,12 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/11 14:16:05 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:25:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-/* static void	print_stacks(t_pusha *stacks)
+static void	print_stacks(t_pusha *stacks)
 {
 	t_stack	*tmp;
 	t_stack	*head;
@@ -24,7 +24,7 @@
 		tmp = tmp->next;
 	}
 	ft_printf("%d ", tmp->num);
-} */
+}
 
 int	return_status(int status)
 {
@@ -69,7 +69,8 @@ static int	del_stack(t_stack *stack)
 
 int	free_stacks(t_pusha *stacks, int status)
 {
-	//print_stacks(stacks);
+	if (!stacks->print)
+		print_stacks(stacks);
 	if (stacks->a_size && stacks->a_stack != NULL)
 		del_stack(stacks->a_stack);
 	if (stacks->b_size && stacks->b_stack != NULL)
