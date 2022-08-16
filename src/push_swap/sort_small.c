@@ -18,8 +18,26 @@ static int	sort_three(t_pusha *stacks)
 
 	a = stacks->a_stack;
 	if (a->num > a->next->num && a->next->num < a->prev->num && a->prev->num\
-	< a->num)
+	> a->num)
 		return (exec_sa(stacks));
+	else if (a->num > a->next->num && a->next->num < a->prev->num && a->prev->num\
+	< a->num)
+		return (exec_ra(stacks));
+	else if (a->num < a->next->num && a->next->num > a->prev->num && a->prev->num\
+	< a->num)
+		return (exec_rra(stacks));
+	else if (a->num < a->next->num && a->next->num > a->prev->num && a->prev->num\
+	> a->num)
+	{
+		exec_sa(stacks);
+		return (exec_ra(stacks));
+	}
+	else if (a->num > a->next->num && a->next->num > a->prev->num && a->prev->num\
+	< a->num)
+	{
+		exec_sa(stacks);
+		return (exec_rra(stacks));
+	}
 	return (0);
 }
 
