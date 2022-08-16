@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/09 14:13:05 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:20:24 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,16 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 
 	ret = 0;
 	count = 1;
+	stacks->min = 2147483647;
+	stacks->max = -2147483648;
 	while (count < ac)
 	{
 		ret = validate_ints(stacks, input[count]);
-		//ft_printf("validate_ints return: %d\n", ret);
+		//ft_printf("stacks->prev->num %d\n", stacks->prev->num);
+		if (stacks->a_stack->prev->num > stacks->max)
+			stacks->max = stacks->a_stack->prev->num;
+		if (stacks->a_stack->prev->num < stacks->min)
+			stacks->min = stacks->a_stack->prev->num;
 		if (ret == -1)
 			return (ret);
 		count++;
@@ -119,5 +125,6 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 		check = check->next;
 	}
 	ft_printf("num: %d\n", check->num); */
+	ft_printf("\nmax: %d, min: %d\n", stacks->max, stacks->min);
 	return (1);
 }
