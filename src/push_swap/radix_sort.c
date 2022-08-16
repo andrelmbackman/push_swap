@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:11:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/11 14:06:06 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:45:58 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@
 	return (tmp);
 } */
 
+static int	get_length(int max)
+{
+	int		len;
+
+	len = 0;
+	while (max >> len != 0)
+		len++;
+	return (len);
+}
 /*
 ** Check mod 10, 9 and so on of every size
 */
@@ -54,7 +63,7 @@ int	radix_sort(t_pusha *stacks)
 	int		size;
 	t_stack	*tmp;
 
-	len = 6;
+	len = get_length(stacks->max);
 	//ft_printf("\nlen: %d\nmax: %d\n", len, stacks->max);
 	tmp = stacks->a_stack;
 	i = 0;
@@ -75,6 +84,8 @@ int	radix_sort(t_pusha *stacks)
 		while (stacks->b_stack)
 			exec_pa(stacks);
 		i++;
+		if (sorted(stacks))
+			return (1);
 	}
 	if (sorted(stacks))
 		return (1);
