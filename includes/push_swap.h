@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/09 17:29:10 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:57:25 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ int		add_stack(t_stack **head, int value);
 int		first_stack(t_stack **head, t_stack *new);
 int		sort_stacks(t_pusha *stacks);
 int		sort_small(t_pusha *stacks);
+int		sort_three(t_pusha *stacks);
+int		sort_five(t_pusha *stacks);
 int		sorted(t_pusha *stacks);
+int		radix_sort(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	rm_head(t_stack *stack);
 void	add_to_empty(t_stack *stack, t_stack *new);

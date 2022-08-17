@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/10 14:20:24 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:13:02 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	long long	tmpnum;
 	t_stack		*tmpstack;
 	t_stack		*head;
-
 	tmpnum = ft_atoll(input);
 	if (!ft_isdigit(input[0]) && input[0] != '-')
 		return (free_stacks(stacks, ERROR));
@@ -94,6 +93,25 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	//stacks->a_stack = head;
 	return (1);
 } */
+static int	validate_string(t_pusha *stacks, char *str)
+{
+	int	ret;
+	int	i;
+
+	ret = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] != '-' && str[i] != '+' && \
+		!ft_isdigit((int)str[i]))
+			i++;
+		ret = validate_ints(stacks, &str[i]);
+		while (str[i] && (str[i] == '-' || str[i] == '+' || \
+		ft_isdigit((int)str[i])))
+			i++;
+	}
+	return (ret);
+}
 
 int	check_ints(t_pusha *stacks, int ac, char **input)
 {
@@ -108,14 +126,15 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 	stacks->max = -2147483648;
 	while (count < ac)
 	{
-		ret = validate_ints(stacks, input[count]);
-		//ft_printf("stacks->prev->num %d\n", stacks->prev->num);
+		//ret = validate_ints(stacks, input[count]);
+		ret = validate_string(stacks, input[count]);
+		//ft_printf("validate_ints return: %d\n", ret);
+		if (ret == -1)
+			return (ret);
 		if (stacks->a_stack->prev->num > stacks->max)
 			stacks->max = stacks->a_stack->prev->num;
 		if (stacks->a_stack->prev->num < stacks->min)
 			stacks->min = stacks->a_stack->prev->num;
-		if (ret == -1)
-			return (ret);
 		count++;
 	}
 /* 	check = stacks->a_stack;
@@ -125,6 +144,5 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 		check = check->next;
 	}
 	ft_printf("num: %d\n", check->num); */
-	ft_printf("\nmax: %d, min: %d\n", stacks->max, stacks->min);
 	return (1);
 }

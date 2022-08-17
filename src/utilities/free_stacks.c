@@ -6,11 +6,25 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/04 13:36:53 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:25:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+static void	print_stacks(t_pusha *stacks)
+{
+	t_stack	*tmp;
+	t_stack	*head;
+
+	tmp = stacks->a_stack;
+	head = stacks->a_stack;
+	while (tmp->next != head)
+	{
+		ft_printf("%d ", tmp->num);
+		tmp = tmp->next;
+	}
+	ft_printf("%d ", tmp->num);
+}
 
 int	return_status(int status)
 {
@@ -55,6 +69,8 @@ static int	del_stack(t_stack *stack)
 
 int	free_stacks(t_pusha *stacks, int status)
 {
+	if (!stacks->print)
+		print_stacks(stacks);
 	if (stacks->a_size && stacks->a_stack != NULL)
 		del_stack(stacks->a_stack);
 	if (stacks->b_size && stacks->b_stack != NULL)
