@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:11:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/18 14:35:08 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:04:03 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,22 @@ int	radix_sort(t_pusha *stacks)
 			tmp = stacks->a_stack;
 			if (((tmp->num >> i) & 1) == 1)
 			{
+				exec_ra(stacks);
 				if (stacks->b_stack && (stacks->b_stack->num < \
 				stacks->b_stack->next->num && stacks->b_stack->num > stacks->b_stack->prev->num))
-					exec_rr(stacks);
-				else
-					exec_ra(stacks);
+					exec_ss(stacks);
 			}
 			else
 				exec_pb(stacks);
 			j++;
 		}
 		while (stacks->b_stack)
+		{
+			/* if (stacks->a_stack->num > stacks->a_stack->next->num && \
+			stacks->b_stack->num < stacks->b_stack->next->num)
+				exec_ss(stacks); */
 			exec_pa(stacks);
+		}
 		i++;
 	}
 	if (sorted(stacks))
