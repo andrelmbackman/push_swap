@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:56:19 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/11 13:39:24 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:12:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	sorted(t_pusha *stacks)
 
 	head = stacks->a_stack;
 	tmp = head;
+	//ft_printf("\nAre they sorted?\n");
 	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (0);
 	while (tmp->next != head && stacks->a_size > 1)
@@ -29,6 +30,7 @@ int	sorted(t_pusha *stacks)
 	}
 	 if (tmp->num < tmp->next->num)
 		return (0);
+	//ft_printf("\nThey are sorted\n");
 	return (1);
 }
 
@@ -42,7 +44,7 @@ int	sort_stacks(t_pusha *stacks)
 	else if (stacks->a_size <= 5)
 		return (sort_small(stacks));
 	else
-		return (radix_sort(stacks));
+		return(quicksort(stacks));
 	return (0);
 }
 
