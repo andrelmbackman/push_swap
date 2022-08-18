@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:11:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/16 18:45:58 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:30:05 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,19 @@ int	radix_sort(t_pusha *stacks)
 	size = stacks->a_size;
 	while (i < len)
 	{
+		if (sorted(stacks))
+			return (1);
 		j = 0;
 		while (j < size)
 		{
 			tmp = stacks->a_stack;
 			if (((tmp->num >> i) & 1) == 1)
-				exec_ra(stacks);
+			{
+				if (stacks->b_stack && stacks->b_stack->num < stacks->b_stack->next->num)
+					exec_rr(stacks);
+				else
+					exec_ra(stacks);
+			}
 			else
 				exec_pb(stacks);
 			j++;
@@ -84,8 +91,6 @@ int	radix_sort(t_pusha *stacks)
 		while (stacks->b_stack)
 			exec_pa(stacks);
 		i++;
-		if (sorted(stacks))
-			return (1);
 	}
 	if (sorted(stacks))
 		return (1);
