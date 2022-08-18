@@ -3,11 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:33:09 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/04 15:33:19 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:07:13 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	sort_big(t_pusha *stacks)
+{
+	if (stacks)
+		return (1);
+	else
+		return (0);
+}
