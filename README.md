@@ -5,6 +5,8 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
+- [ ] Make radix sort work with negative numbers (make them in order and positive), only call if n < some large number and k < ?
+https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
 - [x] Execute moves (dispatch table? Combine functions?)
 - [x] Make a circular doubly linked list? Faster to reach the last node.
 - [x] Fix free_stacks to work for circular doubly linked list DONE?
