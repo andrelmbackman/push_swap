@@ -5,6 +5,10 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
+- [X] finds destined next and prev
+- [ ] create algorithm
+- [ ] protect against seg faults when doing -0, +1..
+- [ ] Make radix sort but before the loop, check how many fit the thing, then stop when they have all been pushed??
 - [ ] Make radix sort work with negative numbers (make them in order and positive), only call if n < some large number and k < ?
 https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
 - [x] Execute moves (dispatch table? Combine functions?)
