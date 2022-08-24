@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/17 17:03:42 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:35:15 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	add_stack(t_stack **head, int value)
 	new->next = (*head);
 	(*head)->prev = new;
 	new->top = 0;
+	new->dst_next = NULL;
+	new->dst_prev = NULL;
 	return (1);
 }
 /* int	add_stack(t_stack **head, int value)
