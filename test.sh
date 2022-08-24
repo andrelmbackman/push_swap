@@ -9,5 +9,5 @@
 # = 2144 (the three above with radix sort, only positive integers,
 # even when k = n the moves are always > 1000 = BAD)
 ARGS="95 32 15 48 64 80 55 19 9 46 44 14 65 50 42 81 89 21 85 2 33 34 67 54 43 3 63 0 29 82 96 13 10 93 75 8 77 92 49 35 98 24 66 4 51 57 38 20 56 61 26 90 45 7 40 79 100 73 62 52 18 58 83 23 12 70 41 71 99 69 97 86 68 25 11 91 84 6 17 31 27 16 37 28 22 87 47 5 78 53 60 59 76 39 1 36 94 74 88"
-./push_swap $ARGS
-#./push_swap $ARGS | ./checker $ARGS
+./push_swap $ARGS | wc -l
+./push_swap $ARGS | ./checker $ARGS
