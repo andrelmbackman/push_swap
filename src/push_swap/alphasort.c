@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alphasort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:11:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/24 18:58:26 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/25 14:47:04 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 /*
  * Init both dst to 0, this will be untrue since it needs to be above 5 size
  */
+typedef struct	s_chunk
+{
+	int				min;
+	int				max;
+	int				size;
+	t_stack			*first;
+	t_stack			*last;
+	struct s_chunk	*next;
+	struct s_chunk	*prev;
+}	t_chunk;
 
 static void	get_neighbor(t_stack *first, t_stack *a)
 {
