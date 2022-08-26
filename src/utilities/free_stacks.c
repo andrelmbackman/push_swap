@@ -6,24 +6,54 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/16 18:25:54 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:07:28 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-static void	print_stacks(t_pusha *stacks)
+static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-	t_stack	*head;
-
-	tmp = stacks->a_stack;
-	head = stacks->a_stack;
-	while (tmp->next != head)
+	if (*a != NULL && (*a)->next != stacks->a_stack)
 	{
-		ft_printf("%d ", tmp->num);
-		tmp = tmp->next;
+		ft_printf("| %10d\t|", (*a)->num);
+		*a = (*a)->next;
 	}
-	ft_printf("%d ", tmp->num);
+	else
+		ft_printf("|\t          \t");
+	if (*b != NULL && (*b)->next != stacks->b_stack)
+	{
+		ft_printf(" %10d|\n", (*b)->num);
+		*b = (*b)->next;
+	}
+	else
+		ft_printf("\t        |\n");
+	if ((!*a || (*a)->next == stacks->a_stack) && (!*b || \
+	(*b)->next == stacks->b_stack))
+		return (0);
+	return (1);
+}
+
+void	print_stacks(t_pusha *stacks)
+{
+	int		i;
+	t_stack	*atmp;
+	t_stack	*btmp;
+
+	i = 1;
+	atmp = stacks->a_stack;
+	btmp = stacks->b_stack;
+	ft_printf("\n|\tStack A | Stack B\t|\n+-------------------------------+\n");
+	while (i)
+		i = print_ab(stacks, &atmp, &btmp);
+	if (atmp != NULL)
+		ft_printf("| %10d\t|", atmp->num);
+	else
+		ft_printf("\t          ");
+	if (btmp != NULL)
+		ft_printf(" %10d|\n", btmp->num);
+	else
+		ft_printf("\t        |\n");
+	ft_printf("+-------------------------------+\n");
 }
 
 int	return_status(int status)
