@@ -10,8 +10,9 @@ optimized data sorting."
 - [ ] make a function that pushes chunks, that takes an int count argument to chose
 how many chunks (this way experimenting will be a lot easier)- [ ] when pushing back chunks, check if you can save moves by not rotating, and instead pushing and doing ss
 - [ ] Every check before pushing to b: check if SS, RR or RRR is useful.
+- [ ] Segfault at max int with
 
-
+- [ ] protect from a huge number of ints?
 - [ ] create algorithm
 - [ ] protect against seg faults when doing -0, +1..
 - [ ] Make radix sort but before the loop, check how many fit the thing, then stop when they have all been pushed??
