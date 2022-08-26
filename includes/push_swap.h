@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/25 16:24:57 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:12:21 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,12 @@ int		sorted(t_pusha *stacks);
 int		radix_sort(t_pusha *stacks);
 int		quicksort(t_pusha *stacks);
 int		alphasort(t_pusha *stacks);
+int		push_chunks(t_pusha *stacks, int count);
+int		rotate_before_push(t_pusha *stacks, int goal, int direction);
+void	print_stacks(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	add_to_empty(t_stack *stack, t_stack *new);
-int		push_chunks(t_pusha *stacks, int count);
-int		rotate_before_push(t_stack *stack, int goal, int direction);
+void	get_destined(t_stack *a, int min, int max);
 t_pusha	*init_stacks(void);
 
 #endif
