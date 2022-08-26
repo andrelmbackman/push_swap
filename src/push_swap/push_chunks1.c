@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:05:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/25 16:42:15 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:26:01 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	find_rotate(t_pusha *stacks, int min, int max)
 	while (front->next != back && back->prev != front)
 	{
 		if ((front->num >= min && front->num <= max) \
-		|| (back->num >= min && back->num <= max))
+		|| (back->num >= min && back->num <= max) || (front == back))
 			break ;
 		front = front->next;
 		back = back->prev;
@@ -50,16 +50,17 @@ static void	find_minmax(t_stack *stack, int min, int max, int size)
 	tmp = stack;
 	save = NULL;
 	min = 2147483647;
+	ft_printf("\nfind_minmax: \n");
 	while (tmp->next != stack)
 	{
-		if (tmp->num < min)
+		if (tmp->num <= min)
 		{
 			min = tmp->num;
 			save = tmp;
 		}
 		tmp = tmp->next;
 	}
-	if (tmp->num < min)
+	if (tmp->num <= min)
 	{
 		min = tmp->num;
 		save = tmp;
@@ -73,7 +74,6 @@ static void	find_minmax(t_stack *stack, int min, int max, int size)
 static void	one_chunk(t_pusha *stacks, int size)
 {
 	int	i;
-	int	num;
 	int	min;
 	int	max;
 
@@ -83,10 +83,16 @@ static void	one_chunk(t_pusha *stacks, int size)
 	while (++i <= size)
 	{
 		find_minmax(stacks->a_stack, min, max, size);
+		ft_printf("\nin one_chunk\n");
 		find_rotate(stacks, min, max);
 		exec_pb(stacks);
 	}
 }
+
+/*
+** push_chunks finds the optimal moves to push chunks of similar size to
+** b_stack, the count argument lets you specify the desired number of chunks.
+*/
 
 int	push_chunks(t_pusha *stacks, int count)
 {
@@ -97,9 +103,12 @@ int	push_chunks(t_pusha *stacks, int count)
 	size = stacks->a_size / count;
 	while (++i <= count)
 	{
+		print_stacks(stacks);
+		//ft_printf("\nin push_chunks\n");
 		if (i == count)
 			size = stacks->a_size;
 		one_chunk(stacks, size);
 	}
+	print_stacks(stacks);
 	return (0);
 }
