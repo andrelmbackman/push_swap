@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:56:19 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 14:39:47 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:40:17 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	sort_stacks(t_pusha *stacks)
 	else if (stacks->a_size <= 5)
 		return (sort_small(stacks));
 	else
-		return(push_chunks(stacks, 11));
+		return(push_chunks(stacks, 4));
 	return (0);
 }
 

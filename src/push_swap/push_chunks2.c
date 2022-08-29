@@ -6,11 +6,30 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 14:29:16 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:53:17 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static int	find_smallest(t_stack *b)
+{
+	t_stack	*tmp;
+	int		min;
+
+	min = 2147483647;
+	tmp = b;
+	while (tmp->next != b)
+	{
+		if (tmp->num <= min)
+			min = tmp->num;
+		tmp = tmp->next;
+	}
+	if (tmp->num <= min)
+			min = tmp->num;
+	//ft_printf("\nmax: %d\n", max);
+	return (min);
+}
 
 static int	find_biggest(t_stack *b)
 {
@@ -69,7 +88,15 @@ int	rotate_before_push(t_pusha *stacks, int goal, int direction)
 	if (direction > 0)
 	{
 		while (stacks->a_stack->num != goal)
-			exec_ra(stacks);
+		{
+			/* if (stacks->a_stack->num == find_smallest(stacks->a_stack))
+			{
+				exec_pb(stacks);
+				exec_rr(stacks);
+			}
+			else */
+				exec_ra(stacks);
+		}
 	}
 	else
 	{

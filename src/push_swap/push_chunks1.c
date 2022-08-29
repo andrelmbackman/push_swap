@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:05:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 14:24:45 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:43:34 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ static void	one_chunk(t_pusha *stacks, int size)
 	max = stacks->max;
 	while (size > 0)
 	{
+		if (stacks->a_stack == NULL)
+			break ;
 		find_minmax(stacks->a_stack, &min, &max, size);
 		//ft_printf("\nin one_chunk - min: %d max: %d size: %d\n", min, max, size);
 		find_rotate(stacks, min, max);
@@ -109,6 +111,8 @@ int	push_chunks(t_pusha *stacks, int count)
 	{
 		//print_stacks(stacks);
 		//ft_printf("\nin push_chunks\n");
+		if (stacks->a_stack == NULL)
+			break ;
 		if (i == count)
 			size = stacks->a_size;
 		one_chunk(stacks, size);
