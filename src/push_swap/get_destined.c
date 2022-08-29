@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/26 19:14:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 13:39:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,39 @@ static void	get_neighbor(t_stack *first, t_stack *a)
 void	get_destined(t_stack *a, int min, int max)
 {
 	t_stack *tmp;
-	t_stack	*head;
+	//t_stack	*head;
 	t_stack	*first;
 	t_stack	*last;
 
 	tmp = a;
-	head = a;
+	//head = a;
 	first = NULL;
 	last = NULL;
-	while (tmp->next != head)
+	while (tmp->next != a)
 	{
 		if (tmp->num == min)
 			first = tmp;
 		if (tmp->num == max)
 			last = tmp;
 		//ft_printf("\ngetting neighbor\nhead->num :%d\n", head->num);
-		get_neighbor(head, tmp);
+		get_neighbor(a, tmp);
 		tmp = tmp->next;
 	}
-	get_neighbor(head, tmp);
+	get_neighbor(a, tmp);
 	if (tmp->num == min)
 		first = tmp;
 	if (tmp->num == max)
 		last = tmp;
 	first->dst_prev = last;
 	last->dst_next = first;
+
+	t_stack	*test = a;
+	while (test->next != a)
+	{
+		/* ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
+		test->num, test->prev->num, test->next->num, test->dst_next->num, test->dst_next->num); */
+		test = test->next;
+	}
+	/* ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
+		test->num, test->prev->num, test->next->num, test->dst_next->num, test->dst_next->num); */
 }
