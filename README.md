@@ -5,7 +5,7 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
-- [ ] should the chunks be if the same size of just in the same range?
+- [ ] push the necessary ones when rotating
 - [ ] if not using dst_prev: deletet it from header and get_destined
 - [ ] determine the range of each chunk, before each push: find the one that is closest
 (with ra or rra)
