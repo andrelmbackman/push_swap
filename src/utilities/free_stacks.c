@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/26 19:07:28 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:41:02 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 		*a = (*a)->next;
 	}
 	else
-		ft_printf("|\t          \t");
+		ft_printf("|\t        |");
 	if (*b != NULL && (*b)->next != stacks->b_stack)
 	{
-		ft_printf(" %10d|\n", (*b)->num);
+		ft_printf(" %10d\t|\n", (*b)->num);
 		*b = (*b)->next;
 	}
 	else
@@ -48,9 +48,9 @@ void	print_stacks(t_pusha *stacks)
 	if (atmp != NULL)
 		ft_printf("| %10d\t|", atmp->num);
 	else
-		ft_printf("\t          ");
+		ft_printf("|\t        |");
 	if (btmp != NULL)
-		ft_printf(" %10d|\n", btmp->num);
+		ft_printf(" %10d\t|\n", btmp->num);
 	else
 		ft_printf("\t        |\n");
 	ft_printf("+-------------------------------+\n");
