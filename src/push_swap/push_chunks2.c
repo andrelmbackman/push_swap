@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_chunks2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 16:53:17 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:05:14 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	find_smallest(t_stack *b)
+/* static int	find_smallest(t_stack *b)
 {
 	t_stack	*tmp;
 	int		min;
@@ -29,7 +29,7 @@ static int	find_smallest(t_stack *b)
 			min = tmp->num;
 	//ft_printf("\nmax: %d\n", max);
 	return (min);
-}
+} */
 
 static int	find_biggest(t_stack *b)
 {
