@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:11:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/26 19:14:20 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:45:23 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	alphasort(t_pusha *stacks)
 	t_stack	*tmp;
 	t_stack	*head;
 
-	get_destined(stacks->a_stack, stacks->min, stacks->max);
 	tmp = stacks->a_stack;
 	head = tmp;
 	/* while (tmp->next != head)

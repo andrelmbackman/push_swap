@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_chunks2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 17:05:14 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:28:20 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,82 @@ static int	find_biggest(t_stack *b)
 	return (max);
 }
 
+static int	find_smallest(t_stack *b)
+{
+	t_stack	*tmp;
+	int		min;
+
+	min = 2147483647;
+	tmp = b;
+	while (tmp->next != b)
+	{
+		if (tmp->num <= min)
+			min = tmp->num;
+		tmp = tmp->next;
+	}
+	if (tmp->num <= min)
+			min = tmp->num;
+	//ft_printf("\nmax: %d\n", max);
+	return (min);
+}
+
+static int	find_quickest(t_stack *b, int *goal)
+{
+	t_stack	*front;
+	t_stack	*back;
+	int		min;
+	int		max;
+
+	front = b;
+	back = b;
+	min = find_smallest(b);
+	max = find_biggest(b);
+	while (front->next != back && back->prev != front)
+	{
+		if (front->num == min || front->num == max || back->num == min || \
+		back->num == max)
+			break ;
+		front = front->next;
+		back = back->prev;
+		if (front == back)
+			break ;
+	}
+	if (back->num == max || front->num == max)
+		*goal = max;
+	else
+		*goal = min;
+	if (front->num == min || front->num == max)
+		return (1);
+	else
+		return (-1);
+}
+
 int	rotate_pushback(t_pusha *stacks)
+{
+	int		goal;
+	t_stack	*tmp;
+
+	while (stacks->b_stack != NULL)
+	{
+		tmp = stacks->b_stack;
+		if (find_quickest(stacks->b_stack, &goal) < 0)
+		{
+			while (stacks->b_stack->num != goal)
+				exec_rrb(stacks);
+		}
+		else
+		{
+			while (stacks->b_stack->num != goal)
+				exec_rb(stacks);
+		}
+		exec_pa(stacks);
+		if (stacks->a_stack->num == find_smallest(stacks->b_stack))
+			exec_ra(stacks);
+	}
+	return (1);
+}
+
+/* int	rotate_pushback(t_pusha *stacks)
 {
 	t_stack	*tmp;
 	int		i;
@@ -80,7 +155,7 @@ int	rotate_pushback(t_pusha *stacks)
 		exec_pa(stacks);
 	}
 	return (1);
-}
+} */
 
 int	rotate_before_push(t_pusha *stacks, int goal, int direction)
 {
