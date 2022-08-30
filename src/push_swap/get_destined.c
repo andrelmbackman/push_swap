@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 13:39:33 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:46:26 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@
 	struct s_chunk	*prev;
 }	t_chunk;
  */
+
+/* static void	get_chunk_no(t_stack *first, int size)
+{
+	t_stack	*tmp;
+	int		i;
+
+	i = 1;
+	tmp = first;
+	while (tmp->next != first)
+	{
+		if (i < size)
+			tmp->chunk = (size - i);
+		i++;
+		tmp = tmp->next;
+	}
+} */
+
 static void	get_neighbor(t_stack *first, t_stack *a)
 {
 	t_stack	*tmp;
@@ -37,13 +54,12 @@ static void	get_neighbor(t_stack *first, t_stack *a)
 	max = 2147483647;
 	while (tmp->next != first)
 	{
-		//ft_printf("\ninside get_neighbor\n");
 		if (tmp->num >= min && tmp->num < a->num)
 		{
 			min = tmp->num;
 			a->dst_prev = tmp;
 		}
-		if (tmp->num <= max && tmp->num > a->num)
+		else if (tmp->num <= max && tmp->num > a->num)
 		{
 			max = tmp->num;
 			a->dst_next = tmp;
@@ -52,19 +68,17 @@ static void	get_neighbor(t_stack *first, t_stack *a)
 	}
 	if (tmp->num >= min && tmp->num < a->num)
 		a->dst_prev = tmp;
-	if (tmp->num <= max && tmp->num > a->num)
+	else if (tmp->num <= max && tmp->num > a->num)
 		a->dst_next = tmp;
 }
 
-void	get_destined(t_stack *a, int min, int max)
+void	get_destined(t_stack *a, int min, int max, int size)
 {
 	t_stack *tmp;
-	//t_stack	*head;
 	t_stack	*first;
 	t_stack	*last;
 
 	tmp = a;
-	//head = a;
 	first = NULL;
 	last = NULL;
 	while (tmp->next != a)
@@ -73,7 +87,6 @@ void	get_destined(t_stack *a, int min, int max)
 			first = tmp;
 		if (tmp->num == max)
 			last = tmp;
-		//ft_printf("\ngetting neighbor\nhead->num :%d\n", head->num);
 		get_neighbor(a, tmp);
 		tmp = tmp->next;
 	}
@@ -84,14 +97,13 @@ void	get_destined(t_stack *a, int min, int max)
 		last = tmp;
 	first->dst_prev = last;
 	last->dst_next = first;
-
-	t_stack	*test = a;
+	/* t_stack	*test = a;
 	while (test->next != a)
 	{
-		/* ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
-		test->num, test->prev->num, test->next->num, test->dst_next->num, test->dst_next->num); */
+		ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
+		test->num, test->prev->num, test->next->num, test->dst_prev->num, test->dst_next->num);
 		test = test->next;
 	}
-	/* ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
-		test->num, test->prev->num, test->next->num, test->dst_next->num, test->dst_next->num); */
+	ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
+		test->num, test->prev->num, test->next->num, test->dst_prev->num, test->dst_next->num); */
 }
