@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 11:33:01 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:26:43 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,11 @@ int		sort_small(t_pusha *stacks);
 int		sort_three(t_pusha *stacks);
 int		sort_five(t_pusha *stacks);
 int		sorted(t_pusha *stacks);
+
 int		radix_sort(t_pusha *stacks);
-int		quicksort(t_pusha *stacks);
+
 int		alphasort(t_pusha *stacks);
+
 int		push_chunks(t_pusha *stacks, int count);
 int		rotate_before_push(t_pusha *stacks, int goal, int direction);
 int		rotate_pushback(t_pusha *stacks);
