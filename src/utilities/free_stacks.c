@@ -6,11 +6,12 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 12:41:02 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:12:10 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
 static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 {
 	if (*a != NULL && (*a)->next != stacks->a_stack)
@@ -99,8 +100,8 @@ static int	del_stack(t_stack *stack)
 
 int	free_stacks(t_pusha *stacks, int status)
 {
-	if (!stacks->print)
-		print_stacks(stacks);
+	/* if (!stacks->print)
+		print_stacks(stacks); */
 	if (stacks->a_size && stacks->a_stack != NULL)
 		del_stack(stacks->a_stack);
 	if (stacks->b_size && stacks->b_stack != NULL)

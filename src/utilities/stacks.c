@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 11:31:56 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 15:26:30 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_stacks(t_pusha *stacks)
 	tmp = head;
 	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (free_stacks(stacks, KO));
-	ft_printf("Checking stack a: %d\nsize: %d\n\n", stacks->a_stack->num, stacks->a_size);
+	//ft_printf("Checking stack a: %d\nsize: %d\n\n", stacks->a_stack->num, stacks->a_size);
 	while (tmp->next != head && stacks->a_size > 1)
 	{
 		if (tmp->num > tmp->next->num)
