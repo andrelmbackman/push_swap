@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:43:00 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/09 18:03:22 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:27:57 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,10 @@ int	exec_pa(t_pusha *stacks)
 	if (stacks->a_stack == NULL)
 		add_to_empty(stacks->a_stack, tmp);
 	else
-	{
 		add_head(stacks->a_stack, tmp);
-		/* stacks->a_stack->prev->next = tmp;
-		tmp->prev = stacks->a_stack->prev;
-		stacks->a_stack->top = 0;
-		tmp->next = stacks->a_stack;
-		stacks->a_stack->prev = tmp; */
-	}
 	stacks->a_stack = tmp;
 	stacks->b_size--;
 	stacks->a_size++;
-	stacks->b_stack->top = 1;
-	/* ft_printf("\nchecking whether pb works..\na:%12d top: %d\n", stacks->a_stack->num, stacks->a_stack->top);
-	ft_printf("a->next:%6d\n", stacks->a_stack->next->num);
-	ft_printf("b: %11d\nb->next: %5d\n\n", stacks->b_stack->num, stacks->b_stack->next->num); */
 	if (nullify)
 		stacks->b_stack = NULL;
 	if (stacks->print)
@@ -131,21 +120,10 @@ int	exec_pb(t_pusha *stacks)
 	if (stacks->b_stack == NULL)
 		add_to_empty(stacks->b_stack, tmp);
 	else
-	{
 		add_head(stacks->b_stack, tmp);
-		/* stacks->b_stack->prev->next = tmp;
-		tmp->prev = stacks->b_stack->prev;
-		stacks->b_stack->top = 0;
-		tmp->next = stacks->b_stack;
-		stacks->b_stack->prev = tmp; */
-	}
 	stacks->b_stack = tmp;
 	stacks->a_size--;
 	stacks->b_size++;
-	stacks->a_stack->top = 1;
-	/* ft_printf("\nchecking whether pb works..\na:%12d top: %d\n", stacks->a_stack->num, stacks->a_stack->top);
-	ft_printf("a->next:%6d\n", stacks->a_stack->next->num);
-	ft_printf("b: %11d\n\n", stacks->b_stack->num); */
 	 if (nullify)
 		stacks->a_stack = NULL;
 	if (stacks->print)

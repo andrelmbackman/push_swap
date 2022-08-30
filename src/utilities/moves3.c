@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:17:38 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/09 18:08:19 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:29:57 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	exec_rra(t_pusha *stacks)
 {
 	if (!stacks->a_stack)
 		return (0);
-	stacks->a_stack->top = 0;
 	stacks->a_stack = stacks->a_stack->prev;
-	stacks->a_stack->top = 1;
 	if (stacks->print)
 		write(1, "rra\n", 4);
 	return (1);
@@ -28,9 +26,7 @@ int	exec_rrb(t_pusha *stacks)
 {
 	if (!stacks->b_stack)
 		return (0);
-	stacks->b_stack->top = 0;
 	stacks->b_stack = stacks->b_stack->prev;
-	stacks->b_stack->top = 1;
 	if (stacks->print)
 		write(1, "rrb\n", 4);
 	return (1);
