@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/29 13:59:32 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:33:01 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 typedef struct s_stack
 {
 	int				num;
-	int				top;
+	int				chunk;
 	struct s_stack	*dst_next;
 	struct s_stack	*dst_prev;
 	struct s_stack	*next;
@@ -115,7 +115,7 @@ int		rotate_pushback(t_pusha *stacks);
 void	print_stacks(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	add_to_empty(t_stack *stack, t_stack *new);
-void	get_destined(t_stack *a, int min, int max);
+void	get_destined(t_stack *a, int min, int max, int size);
 t_pusha	*init_stacks(void);
 
 #endif
