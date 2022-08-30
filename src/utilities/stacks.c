@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/23 18:35:15 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:31:56 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	first_stack(t_stack **head, t_stack *new)
 {
-	new->top = 1;
 	new->next = new;
 	new->prev = new;
 	*head = new;
@@ -32,6 +31,7 @@ int	add_stack(t_stack **head, int value)
 	if (!new)
 		return (0);
 	new->num = value;
+	new->chunk = 0;
 	if (*head == NULL)
 		return (first_stack(head, new));
 	last = (*head)->prev;
@@ -39,33 +39,10 @@ int	add_stack(t_stack **head, int value)
 	new->prev = last;
 	new->next = (*head);
 	(*head)->prev = new;
-	new->top = 0;
 	new->dst_next = NULL;
 	new->dst_prev = NULL;
 	return (1);
 }
-/* int	add_stack(t_stack **head, int value)
-{
-	t_stack	*new;
-	t_stack	*last;
-
-	//ft_printf("Are we adding a stack?\n");
-	new = (t_stack *)malloc(sizeof(t_stack));
-	if (!new)
-		return (0);
-	new->num = value;
-	if (*head == NULL)
-		return (first_stack(head, new));
-	last = (*head)->prev;
-	new->next = *head;
-	(*head)->prev = new;
-	new->top = 1;
-	new->prev = last;
-	last->next = new;
-	(*head)->top = 0;
-	(*head) = new;
-	return (1);
-} */
 
 int	check_stacks(t_pusha *stacks)
 {

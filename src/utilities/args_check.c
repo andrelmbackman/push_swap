@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/23 18:00:55 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:30:47 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,9 @@ static int	validate_ints(t_pusha *stacks, char *input)
 {
 	long long	tmpnum;
 	int			ret;
-	//t_stack		*head;
 
 	tmpnum = ft_atoll(input);
 	ret = 0;
-	//head = stacks->a_stack;
-	//ft_printf("Arg after ft_atoll: %ld\n", tmpnum);
 	if (!ft_isdigit(input[0]) && input[0] != '-')
 		return (free_stacks(stacks, ERROR));
 	else if (tmpnum > 2147483647 || tmpnum < -2147483648)
@@ -56,8 +53,6 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	else
 		stacks->a_size++;
 	stacks->empty = 0;
-	//ft_printf("\narg: %li\na_stack: %d\ntop: %d\n\n", tmpnum, stacks->a_stack->num, stacks->a_stack->top);
-	//stacks->a_stack = head;
 	return (1);
 }
 
