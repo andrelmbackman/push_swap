@@ -5,11 +5,18 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
-- [ ] push the necessary ones when rotating
+BEST:
+500: 6084 - 7236
+100: 646 - 852
+
+- [ ] make two_chunks work with any number of ints
+(- [ ] function that checks the general visinity, would it be beneficial to keep
+doing rb or rrb?)
+- [x] push the necessary ones when rotating
 - [ ] if not using dst_prev: deletet it from header and get_destined
-- [ ] determine the range of each chunk, before each push: find the one that is closest
+- [x] determine the range of each chunk, before each push: find the one that is closest
 (with ra or rra)
-- [ ] make a function that pushes chunks, that takes an int count argument to chose
+- [x] make a function that pushes chunks, that takes an int count argument to chose
 how many chunks (this way experimenting will be a lot easier)- [ ] when pushing back chunks, check if you can save moves by not rotating, and instead pushing and doing ss
 - [ ] Every check before pushing to b: check if SS, RR or RRR is useful.
 
