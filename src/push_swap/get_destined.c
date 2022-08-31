@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 16:41:18 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:27:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ static void	get_chunk_no(t_stack *first, int size)
 	x = 0;
 	chunk_no = 1;
 	tmp = first;
-	/* if (size <= 100)
-		count = 2;
-	else */
+	if (size <= 100)
 		count = 4;
+	else
+		count = 10;
 	while (tmp->dst_next != first)
 	{
 		x = 0;
 		while (++x <= size / count && tmp->dst_next != first)
 		{
 			tmp->chunk = chunk_no;
-			ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
+			//ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 			tmp = tmp->dst_next;
 		}
 		if (chunk_no < count)
 			chunk_no++;
 	}
 	tmp->chunk = chunk_no;
-	ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
+	//ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 }
 
 static void	get_neighbor(t_stack *first, t_stack *a)
