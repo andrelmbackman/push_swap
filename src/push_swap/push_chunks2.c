@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 16:28:20 by abackman         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:20:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ static int	find_quickest(t_stack *b, int *goal)
 		*goal = max;
 	else
 		*goal = min;
-	if (front->num == min || front->num == max)
+	//ft_printf("\nfind_quickest max: %d, min: %d goal: %d\nfront: %d back: %d\n", max, min, *goal, front->num, back->num);
+	if (front->num == *goal && back->num != *goal)
 		return (1);
 	else
 		return (-1);
@@ -105,11 +106,13 @@ int	rotate_pushback(t_pusha *stacks)
 	int		goal;
 	t_stack	*tmp;
 
+	goal = 0;
 	while (stacks->b_stack != NULL)
 	{
 		tmp = stacks->b_stack;
 		if (find_quickest(stacks->b_stack, &goal) < 0)
 		{
+			//ft_printf("\ngoal: %d\n", goal);
 			while (stacks->b_stack->num != goal)
 				exec_rrb(stacks);
 		}
@@ -119,9 +122,17 @@ int	rotate_pushback(t_pusha *stacks)
 				exec_rb(stacks);
 		}
 		exec_pa(stacks);
-		if (stacks->a_stack->num == find_smallest(stacks->b_stack))
-			exec_ra(stacks);
+		if (stacks->b_stack == NULL)
+			break ;
+		if (goal < find_smallest(stacks->b_stack))
+		{
+			if (find_quickest(stacks->b_stack, &goal) > 0)
+				exec_rr(stacks);
+			else
+				exec_ra(stacks);
+		}
 	}
+	//print_stacks(stacks);
 	return (1);
 }
 
