@@ -6,7 +6,8 @@ CHECKSRC = src/checker/checker.c src/checker/moves_check.c
 PUSHSRC = src/push_swap/push_swap.c src/push_swap/sort_small.c\
 src/push_swap/radix_sort.c src/push_swap/sort_five.c \
 src/push_swap/push_chunks1.c src/push_swap/push_chunks2.c \
-src/push_swap/alphasort.c src/push_swap/get_destined.c
+src/push_swap/alphasort.c src/push_swap/get_destined.c \
+src/push_swap/pushback_subchunks.c
 
 ALLSRC = src/utilities/moves1.c src/utilities/moves2.c\
 src/utilities/moves3.c src/utilities/stacks.c src/utilities/free_stacks.c\
