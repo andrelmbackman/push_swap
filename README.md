@@ -9,6 +9,17 @@ BEST:
 500: 6084 - 7236
 100: 646 - 852
 
+PA: (PB: longest increasing subsequence?)
+PA: look for subchunks instead of largest to smallest, this will grant easier search,
+more use of RR, RRR, SS? - look for (10) numbers? push, get them in order, rotate out
+of the way to fit them in
+- Push them back in general order, they will not be in perfect order until the
+whole subchunk is pushed back to A.
+
+- [ ] f(x): find the range of subchunk
+- [ ] f(x): subchunk(int chunk_no, int subcount) >> 
+>> one_subchunk(pushes one subchunk) >> quickest(pushes one node from the subchunk in order, RB, RRB, RA, RRA, RR, RRR)
+
 - [ ] make two_chunks work with any number of ints
 (- [ ] function that checks the general visinity, would it be beneficial to keep
 doing rb or rrb?)
