@@ -9,6 +9,29 @@ BEST:
 500: 6084 - 7236
 100: 646 - 852
 
+
+
+If a == NULL; then return 0 (0 moves for A);
+
+find match depending on if i </> (b_size / 2), if no dst.. or always look for
+the smallest that is still larger, rotate it to the top of A. In some cases,
+the minimum number of moves requires inefficient rotations in stack A. For instance
+if it is closer to the bottom, but the one in stack B is closer to the top relatively speaking.
+The use of RR to match both to the top might be beneficial.
+
+1. find the closest above, use the index to calculate the moves.
+2. find the closest below, -||-
+3. Each of the above has two numbers, one for how many RA it would take, one for
+how many RRA it would take to get it to the top (or top->prev in case it is lower
+than the one being pushed to A). These can be matched however as long as the amount
+of rotations in A is <= the rotations in B. In some cases, the lowest might be
+to not rotate in the same direction at all.
+4. find the lowest amount of rotations to get both to the right position,
+5. ???
+6. Profit
+
+
+
 PA: (PB: longest increasing subsequence?)
 PA: look for subchunks instead of largest to smallest, this will grant easier search,
 more use of RR, RRR, SS? - look for (10) numbers? push, get them in order, rotate out
