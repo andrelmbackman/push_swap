@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:16:24 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/08 14:50:48 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:51:21 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 long long	ft_atoll(const char *str);
+long long	ft_abs(int num);
 t_list		*ft_lstnew(const void *content, size_t content_size);
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
