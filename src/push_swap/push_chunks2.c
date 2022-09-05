@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/31 15:20:54 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:14:25 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static int	find_quickest(t_stack *b, int *goal)
 	else
 		return (-1);
 }
+
 
 int	rotate_pushback(t_pusha *stacks)
 {
