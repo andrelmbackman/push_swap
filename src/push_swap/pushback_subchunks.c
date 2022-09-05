@@ -6,27 +6,11 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:01:13 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/01 15:21:08 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:20:39 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-static void	one_node(t_pusha *stacks, int min, int max)
-{
-
-}
-
-static void	one_subchunk(t_pusha *stacks, int cur, int size)
-{
-	int	min;
-	int	max;
-	int	i;
-
-	i = 0;
-	min = stacks->min;
-	max = stacks->max;
-}
 
 static int	get_chunksize(t_stack *a, int count)
 {
@@ -48,6 +32,50 @@ static int	get_chunksize(t_stack *a, int count)
 	return (i);
 }
 
+static void	minmax_subchunk(t_stack *stack, int min, int max, int cur)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	if (!stack)
+		return ;
+	while (tmp->next != stack)
+	{
+		if (stack->chunk == cur)
+		{
+			if (stack->num >= max)
+				max = stack->num;
+			if (stack->num <= min)
+				min = stack->num;
+		}
+		tmp = tmp->next;
+	}
+	if (stack->chunk == cur)
+	{
+		if (stack->num >= max)
+			max = stack->num;
+		if (stack->num <= min)
+			min = stack->num;
+	}
+}
+
+static void	one_subchunk(t_pusha *stacks, int cur, int size)
+{
+	int	min;
+	int	max;
+	int	i;
+
+	i = 0;
+	min = stacks->max;
+	max = stacks->min;
+	minmax_subchunk(stacks->b_stack, min, max, cur);
+	while (++i <= size)
+	{
+		one_node(stacks, min, max);
+	}
+}
+
+
 static void	one_chunk(t_pusha *stacks, int cur)
 {
 	int	sub_max;
@@ -68,12 +96,12 @@ static void	one_chunk(t_pusha *stacks, int cur)
 
 int	pushback_subchunks(t_pusha *stacks, int count)
 {
-	int		cur;
+	int		i;
 
-	cur = -1;
-	while (++cur < count)
+	i = -1;
+	while (++i < count)
 	{
-		one_chunk(stacks, count - cur);
+		one_chunk(stacks, count - i);
 	}
 	return (1);
 }
