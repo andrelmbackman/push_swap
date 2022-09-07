@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_destined.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/31 19:27:54 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:28:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	get_chunk_no(t_stack *first, int size)
 	chunk_no = 1;
 	tmp = first;
 	if (size <= 100)
-		count = 4;
+		count = 12;
 	else
-		count = 10;
+		count = 32;
 	while (tmp->dst_next != first)
 	{
 		x = 0;
