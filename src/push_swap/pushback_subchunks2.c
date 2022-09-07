@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pushback_subchunks2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:09:45 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/05 18:24:00 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/07 10:33:09 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	push_node(t_pusha *stacks, t_stack *lowest, int i)
+static void	push_node(t_pusha *stacks, t_stack *lowest)
 {
 	if (stacks->a_size == 1 && stacks->a_stack->num < lowest->num)
 	{
@@ -117,5 +117,5 @@ void	one_node(t_pusha *stacks, int min, int max)
 	if (tmp->num >= min && tmp->num <= max && ft_abs(moves_to_match(stacks,\
 	tmp, i) < ft_abs(num)))
 			lowest = tmp;
-	push_node(stacks, lowest, i);
+	push_node(stacks, lowest);
 }

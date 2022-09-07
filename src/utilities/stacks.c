@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/07 16:09:48 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:22:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ t_pusha	*init_stacks(void)
 	stacks->print = 0;
 	stacks->chunk_no = 0;
 	stacks->chunk_top = 0;
-	stacks-> chunk_bot = 0;
+	stacks->chunk_bot = 0;
 	return (stacks);
 }
