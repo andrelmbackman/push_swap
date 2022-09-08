@@ -5,13 +5,22 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
+- [] make for 6-90 size a simpler
+- [] protect malloc, leaks, free all nodes..
+- [] test all sizes, all int overloads, all flags, all atoll errors, -0, +1..
+- [] double check the makefile errors, such as no program found = no recompile make re
+
+
+
 BEST:
-500: 6084 - 7236
 100: 646 - 852
+500: 6084 - 7236
 
 100: 583 - 655
 500: 5018 - 5445
 
+- Make use of -c and -v flags? only one at a time, if after numbers, display
+usage message and exit.
 
 If a == NULL; then return 0 (0 moves for A);
 
@@ -41,26 +50,10 @@ of the way to fit them in
 - Push them back in general order, they will not be in perfect order until the
 whole subchunk is pushed back to A.
 
-- [ ] f(x): find the range of subchunk
-- [ ] f(x): subchunk(int chunk_no, int subcount) >> 
->> one_subchunk(pushes one subchunk) >> quickest(pushes one node from the subchunk in order, RB, RRB, RA, RRA, RR, RRR)
-
-- [ ] make two_chunks work with any number of ints
-(- [ ] function that checks the general visinity, would it be beneficial to keep
-doing rb or rrb?)
-- [x] push the necessary ones when rotating
 - [ ] if not using dst_prev: deletet it from header and get_destined
-- [x] determine the range of each chunk, before each push: find the one that is closest
-(with ra or rra)
-- [x] make a function that pushes chunks, that takes an int count argument to chose
-how many chunks (this way experimenting will be a lot easier)- [ ] when pushing back chunks, check if you can save moves by not rotating, and instead pushing and doing ss
 - [ ] Every check before pushing to b: check if SS, RR or RRR is useful.
 
 - [ ] protect from a huge number of ints?
 - [ ] protect against seg faults when doing -0, +1..
-
-- [ ] Make radix sort but before the loop, check how many fit the thing, then stop when they have all been pushed??
-- [ ] Make radix sort work with negative numbers (make them in order and positive), only call if n < some large number and k < ?
 https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-
 - make a script that uses curl to get 500 random ints
