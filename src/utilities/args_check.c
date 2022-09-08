@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 11:30:47 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:23:36 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	else
 		stacks->a_size++;
 	stacks->empty = 0;
+	if ((int)tmpnum > stacks->max)
+		stacks->max = (int)tmpnum;
+	if ((int)tmpnum < stacks->min)
+		stacks->min = (int)tmpnum;
 	return (1);
 }
 
@@ -126,10 +130,10 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 		//ft_printf("validate_ints return: %d\n", ret);
 		if (ret == -1)
 			return (ret);
-		if (stacks->a_stack->prev->num > stacks->max)
+		/* if (stacks->a_stack->prev->num > stacks->max)
 			stacks->max = stacks->a_stack->prev->num;
 		if (stacks->a_stack->prev->num < stacks->min)
-			stacks->min = stacks->a_stack->prev->num;
+			stacks->min = stacks->a_stack->prev->num; */
 		count++;
 	}
 /* 	check = stacks->a_stack;
