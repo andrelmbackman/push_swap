@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/07 16:10:41 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/08 16:43:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,19 +108,15 @@ int		sort_stacks(t_pusha *stacks);
 int		sort_small(t_pusha *stacks);
 int		sort_three(t_pusha *stacks);
 int		sort_five(t_pusha *stacks);
+int		sort_medium(t_pusha *stacks);
 int		sorted(t_pusha *stacks);
 
-int		radix_sort(t_pusha *stacks);
+int		find_quickest(t_stack *b, int *goal);
 
-int		alphasort(t_pusha *stacks);
-
-void	one_node(t_pusha *stacks, int min, int max);
-int		total_moves(t_stack *head, int n, int i, int size);
-int		calculate_moves(t_stack *head, int goal, int size);
 int		push_chunks(t_pusha *stacks, int count);
-int		rotate_before_push(t_pusha *stacks, int goal, int direction);
+//int		rotate_before_push(t_pusha *stacks, int goal, int direction);
 int		rotate_pushback(t_pusha *stacks);
-int		pushback_subchunks(t_pusha *stacks, int count);
+void	final_rotate(t_pusha *stacks);
 void	print_stacks(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	add_to_empty(t_stack *stack, t_stack *new);
