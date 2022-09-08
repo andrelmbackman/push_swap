@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/08 16:43:52 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:15:37 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		sorted(t_pusha *stacks);
 
 int		find_quickest(t_stack *b, int *goal);
 
-int		push_chunks(t_pusha *stacks, int count);
+int		sort_big(t_pusha *stacks, int count);
 //int		rotate_before_push(t_pusha *stacks, int goal, int direction);
 int		rotate_pushback(t_pusha *stacks);
 void	final_rotate(t_pusha *stacks);
