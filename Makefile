@@ -5,7 +5,7 @@ CHECKSRC = src/checker/checker.c src/checker/moves_check.c
 
 PUSHSRC = src/push_swap/push_swap.c src/push_swap/sort_small.c\
 src/push_swap/sort_five.c src/push_swap/sort_medium.c\
-src/push_swap/push_chunks1.c src/push_swap/push_chunks2.c \
+src/push_swap/sort_big.c src/push_swap/sort_helpers.c \
  src/push_swap/get_destined.c \
 
 
