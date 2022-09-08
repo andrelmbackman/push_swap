@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_chunks2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/05 13:14:25 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:34:28 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-/* static int	find_smallest(t_stack *b)
-{
-	t_stack	*tmp;
-	int		min;
-
-	min = 2147483647;
-	tmp = b;
-	while (tmp->next != b)
-	{
-		if (tmp->num <= min)
-			min = tmp->num;
-		tmp = tmp->next;
-	}
-	if (tmp->num <= min)
-			min = tmp->num;
-	//ft_printf("\nmax: %d\n", max);
-	return (min);
-} */
 
 static int	find_biggest(t_stack *b)
 {
@@ -69,7 +50,16 @@ static int	find_smallest(t_stack *b)
 	return (min);
 }
 
-static int	find_quickest(t_stack *b, int *goal)
+static int	find_quickest_return(int front, int back, int *goal)
+{
+	//ft_printf("\ngoing mad. front: %d back: %d goal :%d\n", front, back, *goal);
+	if (front == *goal && back != *goal)
+		return (1);
+	else
+		return (-1);
+}
+
+int	find_quickest(t_stack *b, int *goal)
 {
 	t_stack	*front;
 	t_stack	*back;
@@ -95,10 +85,7 @@ static int	find_quickest(t_stack *b, int *goal)
 	else
 		*goal = min;
 	//ft_printf("\nfind_quickest max: %d, min: %d goal: %d\nfront: %d back: %d\n", max, min, *goal, front->num, back->num);
-	if (front->num == *goal && back->num != *goal)
-		return (1);
-	else
-		return (-1);
+	return (find_quickest_return(front->num, back->num, goal));
 }
 
 
@@ -169,19 +156,19 @@ int	rotate_pushback(t_pusha *stacks)
 	return (1);
 } */
 
-int	rotate_before_push(t_pusha *stacks, int goal, int direction)
+/* int	rotate_before_push(t_pusha *stacks, int goal, int direction)
 {
 	//ft_printf("\nrotate_before_push goal: %d, dir: %d\n", goal, direction);
 	if (direction > 0)
 	{
 		while (stacks->a_stack->num != goal)
 		{
-			/* if (stacks->a_stack->num == find_smallest(stacks->a_stack))
-			{
-				exec_pb(stacks);
-				exec_rr(stacks);
-			}
-			else */
+			//if (stacks->a_stack->num == find_smallest(stacks->a_stack))
+			//{
+			//	exec_pb(stacks);
+			//	exec_rr(stacks);
+			//}
+			//else
 				exec_ra(stacks);
 		}
 	}
@@ -191,4 +178,4 @@ int	rotate_before_push(t_pusha *stacks, int goal, int direction)
 			exec_rra(stacks);
 	}
 	return (1);
-}
+} */

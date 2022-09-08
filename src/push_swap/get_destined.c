@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/07 17:28:33 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:25:16 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ void	get_destined(t_stack *a, int min, int max, int size)
 		last = tmp;
 	first->dst_prev = last;
 	last->dst_next = first;
-	get_chunk_no(first, size);
+	//ft_printf("\nmin: %d max: %d first: %p last: %p\n", min, max, first, last);
+	if (size >= 20)
+		get_chunk_no(first, size);
 	/* t_stack	*test = a;
 	while (test->next != a)
 	{
