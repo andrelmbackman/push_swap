@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunks2.c                                     :+:      :+:    :+:   */
+/*   sort_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/08 17:34:28 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:37:17 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	find_biggest(t_stack *b)
+int	find_biggest(t_stack *b)
 {
 	t_stack	*tmp;
 	int		max;
@@ -31,7 +31,7 @@ static int	find_biggest(t_stack *b)
 	return (max);
 }
 
-static int	find_smallest(t_stack *b)
+int	find_smallest(t_stack *b)
 {
 	t_stack	*tmp;
 	int		min;
