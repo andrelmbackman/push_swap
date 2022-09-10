@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/08 17:25:16 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:54:47 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	struct s_chunk	*prev;
 }	t_chunk;
  */
-static void	get_chunk_no(t_stack *first, int size)
+static void	get_chunk_no(t_stack *first, int size, int chunks)
 {
 	t_stack	*tmp;
 	int		x;
@@ -36,10 +36,7 @@ static void	get_chunk_no(t_stack *first, int size)
 	x = 0;
 	chunk_no = 1;
 	tmp = first;
-	if (size <= 100)
-		count = 12;
-	else
-		count = 32;
+	count = chunks;
 	while (tmp->dst_next != first)
 	{
 		x = 0;
@@ -85,25 +82,25 @@ static void	get_neighbor(t_stack *first, t_stack *a)
 		a->dst_next = tmp;
 }
 
-void	get_destined(t_stack *a, int min, int max, int size)
+void	get_destined(t_pusha *stacks, int min, int max, int size)
 {
 	t_stack *tmp;
 	t_stack	*first;
 	t_stack	*last;
 
-	tmp = a;
+	tmp = stacks->a_stack;
 	first = NULL;
 	last = NULL;
-	while (tmp->next != a)
+	while (tmp->next != stacks->a_stack)
 	{
 		if (tmp->num == min)
 			first = tmp;
 		if (tmp->num == max)
 			last = tmp;
-		get_neighbor(a, tmp);
+		get_neighbor(stacks->a_stack, tmp);
 		tmp = tmp->next;
 	}
-	get_neighbor(a, tmp);
+	get_neighbor(stacks->a_stack, tmp);
 	if (tmp->num == min)
 		first = tmp;
 	if (tmp->num == max)
@@ -111,8 +108,8 @@ void	get_destined(t_stack *a, int min, int max, int size)
 	first->dst_prev = last;
 	last->dst_next = first;
 	//ft_printf("\nmin: %d max: %d first: %p last: %p\n", min, max, first, last);
-	if (size >= 20)
-		get_chunk_no(first, size);
+	if (size > 5)
+		get_chunk_no(first, size, stacks->chunk_no);
 	/* t_stack	*test = a;
 	while (test->next != a)
 	{
