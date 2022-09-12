@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/07 18:22:54 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:20:39 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	sorted(t_pusha *stacks)
+{
+	t_stack	*head;
+	t_stack	*tmp;
+
+	head = stacks->a_stack;
+	tmp = head;
+	//ft_printf("\nAre they sorted?\n");
+	if (stacks->b_size != 0 || stacks->b_stack != NULL)
+		return (0);
+	while (tmp->next != head && stacks->a_size > 1)
+	{
+		if (tmp->num > tmp->next->num)
+			return (0);
+		tmp = tmp->next;
+	}
+	 if (tmp->num < tmp->next->num)
+		return (0);
+	//ft_printf("\nThey are sorted\n");
+	return (1);
+}
 
 int	first_stack(t_stack **head, t_stack *new)
 {
