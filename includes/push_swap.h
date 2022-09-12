@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 14:30:36 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:46:22 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ typedef struct s_pusha
 	int		chunk_top;
 	int		chunk_bot;
 }	t_pusha;
+
+/*
+** Linked list used in checker to store all moves before executing.
+*/
+
+typedef struct s_move
+{
+	char 			*str;
+	int				index;
+	struct s_move	*next;
+}	t_move;
 
 /*
 ** Functions for executing the moves
@@ -100,14 +111,14 @@ void	print_stacks(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	add_to_empty(t_stack *stack, t_stack *new);
 void	get_destined(t_pusha *stacks, int min, int max, int size);
+int		free_moves(t_move **head);
+int		free_all(t_pusha *stacks, t_move **head, int message);
 int		return_status(int status);
 int		check_stacks(t_pusha *stacks);
 int		free_stacks(t_pusha *stacks, int status);
-int		moves_check(t_pusha *stacks);
 int		check_ints(t_pusha *stacks, int ac, char **input);
 int		add_stack(t_stack **head, int value);
 int		first_stack(t_stack **head, t_stack *new);
-int		sort_stacks(t_pusha *stacks);
 int		sort_small(t_pusha *stacks);
 int		sort_three(t_pusha *stacks);
 int		sort_five(t_pusha *stacks);
