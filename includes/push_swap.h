@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/09 15:53:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:30:36 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,9 @@
 # define OK 1
 # define NOMESSAGE 10
 
-/* typedef enum e_moves
-{
-	SA = 1,
-	SB,
-	SS,
-	PA,
-	PB,
-	RA,
-	RB,
-	RR,
-	RRA,
-	RRB,
-	RRR,
-}	t_moves; */
+/*
+** Struct for saving the numbers in a circular doubly-linked list
+*/
 
 typedef struct s_stack
 {
@@ -43,6 +32,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+/*
+** Main struct that has both stacks and necessary information stored
+*/
 
 typedef struct s_pusha
 {
@@ -64,19 +57,24 @@ typedef struct s_pusha
 ** Functions for executing the moves
 */
 
-int	exec_sa(t_pusha *stacks);
-int	exec_sb(t_pusha *stacks);
-int	exec_ss(t_pusha *stacks);
-int	exec_pa(t_pusha *stacks);
-int	exec_pb(t_pusha *stacks);
-int	exec_ra(t_pusha *stacks);
-int	exec_rb(t_pusha *stacks);
-int	exec_rr(t_pusha *stacks);
-int	exec_rra(t_pusha *stacks);
-int	exec_rrb(t_pusha *stacks);
-int	exec_rrr(t_pusha *stacks);
+int		exec_sa(t_pusha *stacks);
+int		exec_sb(t_pusha *stacks);
+int		exec_ss(t_pusha *stacks);
+int		exec_pa(t_pusha *stacks);
+int		exec_pb(t_pusha *stacks);
+int		exec_ra(t_pusha *stacks);
+int		exec_rb(t_pusha *stacks);
+int		exec_rr(t_pusha *stacks);
+int		exec_rra(t_pusha *stacks);
+int		exec_rrb(t_pusha *stacks);
+int		exec_rrr(t_pusha *stacks);
 
-typedef int	(*t_pushtable)(t_pusha *stacks);
+
+/*
+** Function pointer and dispatch table
+*/
+
+typedef int					(*t_pushtable)(t_pusha *stacks);
 
 static const t_pushtable	g_pushtable[12] = {
 	exec_sa,
@@ -94,9 +92,14 @@ static const t_pushtable	g_pushtable[12] = {
 };
 
 /*
-** Other functions
+** Miscellaneous functions
 */
 
+void	final_rotate(t_pusha *stacks);
+void	print_stacks(t_pusha *stacks);
+void	add_head(t_stack *stack, t_stack *new);
+void	add_to_empty(t_stack *stack, t_stack *new);
+void	get_destined(t_pusha *stacks, int min, int max, int size);
 int		return_status(int status);
 int		check_stacks(t_pusha *stacks);
 int		free_stacks(t_pusha *stacks, int status);
@@ -110,19 +113,11 @@ int		sort_three(t_pusha *stacks);
 int		sort_five(t_pusha *stacks);
 int		sort_medium(t_pusha *stacks);
 int		sorted(t_pusha *stacks);
-
 int		find_smallest(t_stack *b);
 int		find_biggest(t_stack *b);
 int		find_quickest(t_stack *b, int *goal);
-
 int		sort_big(t_pusha *stacks, int count);
-//int		rotate_before_push(t_pusha *stacks, int goal, int direction);
 int		rotate_pushback(t_pusha *stacks);
-void	final_rotate(t_pusha *stacks);
-void	print_stacks(t_pusha *stacks);
-void	add_head(t_stack *stack, t_stack *new);
-void	add_to_empty(t_stack *stack, t_stack *new);
-void	get_destined(t_pusha *stacks, int min, int max, int size);
 t_pusha	*init_stacks(void);
 
 #endif
