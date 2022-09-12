@@ -1,7 +1,7 @@
 CHECKNAME = checker
 PUSHNAME = push_swap
 
-CHECKSRC = src/checker/checker.c src/checker/moves_check.c
+CHECKSRC = src/checker/checker.c src/checker/free_all.c
 
 PUSHSRC = src/push_swap/push_swap.c src/push_swap/sort_small.c\
 src/push_swap/sort_five.c src/push_swap/sort_medium.c\
@@ -23,10 +23,10 @@ all: $(CHECKNAME) $(PUSHNAME)
 
 
 $(CHECKNAME): $(LIBS) $(CHECKSRC)
-	clang $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
+	clang -g3 $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
 
 $(PUSHNAME): $(LIBS) $(PUSHSRC)
-	clang $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(ALLSRC) $(LIBS)
+	clang -g3 $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(ALLSRC) $(LIBS)
 
 $(LIBS):
 	@$(MAKE) -C ./libft/ all
