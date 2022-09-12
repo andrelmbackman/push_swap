@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunks1.c                                     :+:      :+:    :+:   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:05:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/08 21:15:12 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:27:38 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,6 @@ void	final_rotate(t_pusha *stacks)
 			exec_rra(stacks);
 	}
 }
-
-/*
-** This find_rotate is used with two_chunks, the functions used for one_chunk
-** can be found above.
-*/
 
 /* static int	find_rotate(t_pusha *stacks, int chunk, int max)
 {
@@ -163,6 +158,7 @@ int	push_chunks(t_pusha *stacks, int count)
 	//print_stacks(stacks);
 	return (0);
 } */
+
 static int	size_4_chunks(t_pusha *stacks)
 {
 	int		ret;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_destined.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/09 15:54:47 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:41:51 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	get_destined(t_pusha *stacks, int min, int max, int size)
 	first->dst_prev = last;
 	last->dst_next = first;
 	//ft_printf("\nmin: %d max: %d first: %p last: %p\n", min, max, first, last);
-	if (size > 5)
+	if (size > 23)
 		get_chunk_no(first, size, stacks->chunk_no);
 	/* t_stack	*test = a;
 	while (test->next != a)
