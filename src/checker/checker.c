@@ -6,31 +6,27 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 20:14:44 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:05:26 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	exec_move(t_pusha *stacks, t_move *head)
+static int	exec_moves(t_pusha *stacks, t_move *head)
 {
 	t_move *tmp;
 
 	tmp = head;
-	//ft_printf("\nexec_move\n");
 	if (head == NULL)
 		return (0);
-	print_stacks(stacks);
+	//print_stacks(stacks);
 	while (tmp->next != NULL)
 	{
 		g_pushtable[tmp->index](stacks);
-		//ft_printf("node->command: %s index: %d\n", tmp->str, tmp->index);
 		tmp = tmp->next;
-		print_stacks(stacks);
 	}
 	g_pushtable[tmp->index](stacks);
-	print_stacks(stacks);
-	//ft_printf("node->command: %s index: %d\n", tmp->str, tmp->index);
+	//print_stacks(stacks);
 	if (stacks == NULL || head == NULL)
 		return (-1);
 	return (1);
@@ -55,6 +51,7 @@ static int	valid_move(t_move *head, char **valid)
 	tmp = head;
 	if (head == NULL)
 		return (0);
+	//ft_printf("\n%s\n", head->str);
 	while (tmp != NULL)
 	{
 		ret = 0;
@@ -70,7 +67,7 @@ static int	valid_move(t_move *head, char **valid)
 			i++;
 		}
 		if (!ret)
-			return (0);
+			return (-1);
 		tmp = tmp->next;
 	}
 	return (1);
@@ -124,6 +121,7 @@ static int	moves_check(t_pusha *stacks)
 
 	status = 0;
 	head = NULL;
+	buf = NULL;
 	while (get_next_line((const int)STDIN_FILENO, &buf))
 	{
 		if (add_move(&head, buf) < 0)
@@ -131,15 +129,16 @@ static int	moves_check(t_pusha *stacks)
 			ft_strdel(&buf);
 			return (free_all(stacks, &head, ERROR));
 		}
-		ft_strdel(&buf);
+		else
+			ft_strdel(&buf);
 	}
-	//ft_strdel(&buf);
-	if (!valid_move(head, stacks->valid_moves))
-		return (free_all(stacks, &head, ERROR));
+	status = valid_move(head, stacks->valid_moves);
+	if (status < 1)
+		return (free_all(stacks, &head, status));
 	else
-		exec_move(stacks, head);
-	//ft_printf("\nmoves_check after looop\n");
+		exec_moves(stacks, head);
 	free_moves(&head);
+	ft_free_arr(stacks->valid_moves, (size_t)11);
 	//print_stacks(stacks);
 	return (check_stacks(stacks));
 }
@@ -193,6 +192,5 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	ret = moves_check(stacks);
-	ft_free_arr(stacks->valid_moves, (size_t)11);
 	return (ret);
 }
