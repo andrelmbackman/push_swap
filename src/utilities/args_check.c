@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/08 17:23:36 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:09:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static int	validate_ints(t_pusha *stacks, char *input)
 
 	tmpnum = ft_atoll(input);
 	ret = 0;
-	if (!ft_isdigit(input[0]) && input[0] != '-')
-		return (free_stacks(stacks, ERROR));
-	else if (tmpnum > 2147483647 || tmpnum < -2147483648)
+	//if (!ft_isdigit(input[0]) && input[0] != '-')
+	//	return (free_stacks(stacks, ERROR));
+	if (tmpnum > 2147483647 || tmpnum < -2147483648)
 		return (free_stacks(stacks, ERROR));
 	if (!stacks->empty && stacks->a_stack != NULL)
 		ret = check_dup(stacks->a_stack, tmpnum);
@@ -92,6 +92,20 @@ static int	validate_ints(t_pusha *stacks, char *input)
 	//stacks->a_stack = head;
 	return (1);
 } */
+static int invalid_chars(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_strchr((const char *)"1234567890+- ", (int)str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static int	validate_string(t_pusha *stacks, char *str)
 {
 	int	ret;
@@ -99,6 +113,8 @@ static int	validate_string(t_pusha *stacks, char *str)
 
 	ret = 0;
 	i = 0;
+	if (invalid_chars(str))
+		return (free_stacks(stacks, ERROR));
 	while (str[i])
 	{
 		while (str[i] && str[i] != '-' && str[i] != '+' && \
@@ -129,7 +145,7 @@ int	check_ints(t_pusha *stacks, int ac, char **input)
 		ret = validate_string(stacks, input[count]);
 		//ft_printf("validate_ints return: %d\n", ret);
 		if (ret == -1)
-			return (ret);
+			return (-1);
 		/* if (stacks->a_stack->prev->num > stacks->max)
 			stacks->max = stacks->a_stack->prev->num;
 		if (stacks->a_stack->prev->num < stacks->min)
