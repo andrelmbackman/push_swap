@@ -9,8 +9,9 @@ src/push_swap/sort_big.c src/push_swap/sort_helpers.c \
  src/push_swap/get_destined.c \
 
 
-ALLSRC = src/utilities/moves1.c src/utilities/moves2.c\
-src/utilities/moves3.c src/utilities/stacks.c src/utilities/free_stacks.c\
+ALLSRC = src/utilities/moves1_swap.c src/utilities/moves2_rotate.c\
+src/utilities/moves3_rrotate.c src/utilities/moves4_push.c\
+src/utilities/stacks.c src/utilities/free_stacks.c\
 src/utilities/moves_helpers.c src/utilities/args_check.c
 
 OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
