@@ -6,13 +6,13 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:05:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 15:27:38 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:07:18 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	final_rotate(t_pusha *stacks)
+static void	final_rotate(t_pusha *stacks)
 {
 	t_stack	*tmp;
 	int		i;

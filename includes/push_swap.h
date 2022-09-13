@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 18:46:22 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:07:26 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static const t_pushtable	g_pushtable[12] = {
 ** Miscellaneous functions
 */
 
-void	final_rotate(t_pusha *stacks);
 void	print_stacks(t_pusha *stacks);
 void	add_head(t_stack *stack, t_stack *new);
 void	add_to_empty(t_stack *stack, t_stack *new);
