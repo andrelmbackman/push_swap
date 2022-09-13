@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 13:05:26 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:35:09 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,13 +133,13 @@ static int	moves_check(t_pusha *stacks)
 			ft_strdel(&buf);
 	}
 	status = valid_move(head, stacks->valid_moves);
-	if (status < 1)
+	//print_stacks(stacks);
+	if (status < 0)
 		return (free_all(stacks, &head, status));
 	else
 		exec_moves(stacks, head);
 	free_moves(&head);
 	ft_free_arr(stacks->valid_moves, (size_t)11);
-	//print_stacks(stacks);
 	return (check_stacks(stacks));
 }
 
