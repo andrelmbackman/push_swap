@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:00:47 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/16 19:16:25 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:05:29 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	numbers_match(t_stack *a, t_stack *b, int x, int y)
 	return (0);
 }
 
-static void	find_double_move(t_pusha *stacks)
+/* static void	find_double_move(t_pusha *stacks)
 {
 	t_stack	*a;
 
@@ -35,6 +35,24 @@ static void	find_double_move(t_pusha *stacks)
 		else if (a->num < a->next->num && a->next->num > a->prev->num && \
 	a->prev->num < a->num)
 			exec_rrr(stacks);
+	}
+} */
+
+static void	find_double_move(t_pusha *stacks)
+{
+	t_stack	*a;
+
+	a = stacks->a_stack;
+	if (stacks->b_stack->num < stacks->b_stack->next->num)
+	{
+		if (a->num > a->next->num && a->next->num < a->prev->num && \
+	a->prev->num < a->num)
+			exec_rr(stacks);
+		else if (a->num < a->next->num && a->next->num > a->prev->num && \
+	a->prev->num < a->num)
+			exec_rrr(stacks);
+		else if (a->num > a->next->num)
+			exec_ss(stacks);
 	}
 }
 
