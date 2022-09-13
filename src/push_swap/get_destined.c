@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 14:41:51 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:44:58 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	struct s_chunk	*prev;
 }	t_chunk;
  */
-static void	get_chunk_no(t_stack *first, int size, int chunks)
+static void	get_chunks(t_stack *first, int size, int chunks)
 {
 	t_stack	*tmp;
 	int		x;
@@ -43,14 +43,14 @@ static void	get_chunk_no(t_stack *first, int size, int chunks)
 		while (++x <= size / count && tmp->dst_next != first)
 		{
 			tmp->chunk = chunk_no;
-			//ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
+			//ft_printf("get_chunks -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 			tmp = tmp->dst_next;
 		}
 		if (chunk_no < count)
 			chunk_no++;
 	}
 	tmp->chunk = chunk_no;
-	//ft_printf("get_chunk_no -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
+	//ft_printf("get_chunks -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 }
 
 static void	get_neighbor(t_stack *first, t_stack *a)
@@ -109,7 +109,7 @@ void	get_destined(t_pusha *stacks, int min, int max, int size)
 	last->dst_next = first;
 	//ft_printf("\nmin: %d max: %d first: %p last: %p\n", min, max, first, last);
 	if (size > 23)
-		get_chunk_no(first, size, stacks->chunk_no);
+		get_chunks(first, size, stacks->chunk_no);
 	/* t_stack	*test = a;
 	while (test->next != a)
 	{
