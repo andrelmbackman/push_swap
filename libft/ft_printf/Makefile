@@ -30,7 +30,7 @@ INCL = -I ./includes
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	@gcc -g3 $(FLAGS) $(INCL) -c $(SRCS) ft_printf.c
+	@gcc $(FLAGS) $(INCL) -c $(SRCS) ft_printf.c
 
 clean:
 	@rm -f $(OBJS)

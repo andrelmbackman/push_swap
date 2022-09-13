@@ -38,7 +38,7 @@ all: $(NAME)
 
 $(NAME):
 	@make -C ft_printf
-	gcc -g3 $(WRNG) -c $(SRC)
+	gcc $(WRNG) -c $(SRC)
 	ar rc $(NAME) *.o $(PFOBJS)
 	ranlib $(NAME)
 
