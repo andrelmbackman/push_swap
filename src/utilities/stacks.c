@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 15:20:39 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:36:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_pusha	*init_stacks(void)
 	stacks->max = 0;
 	stacks->empty = 1;
 	stacks->print = 0;
-	stacks->chunk_no = 0;
+	stacks->chunk_no = 12;
 	stacks->chunk_top = 0;
 	stacks->chunk_bot = 0;
 	return (stacks);

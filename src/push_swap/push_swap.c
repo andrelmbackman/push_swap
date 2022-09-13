@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:56:19 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 15:20:49 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:36:27 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static int	sort_stacks(t_pusha *stacks)
 		stacks->chunk_no = 32;
 	else if (stacks->a_size > 149)
 		stacks->chunk_no = 24;
-	else
-		stacks->chunk_no = 12;
 	stacks->chunk_top = (stacks->chunk_no / 2) + 2;
 	stacks->chunk_bot = (stacks->chunk_no / 2) - 1;
 	get_destined(stacks, stacks->min, stacks->max, stacks->a_size);
