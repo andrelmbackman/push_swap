@@ -6,11 +6,20 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 10:36:33 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:16:45 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static int	first_stack(t_stack **head, t_stack *new)
+{
+	new->next = new;
+	new->prev = new;
+	*head = new;
+	//ft_printf("\nADDING FIRST STACK\n");
+	return (1);
+}
 
 int	sorted(t_pusha *stacks)
 {
@@ -34,14 +43,6 @@ int	sorted(t_pusha *stacks)
 	return (1);
 }
 
-int	first_stack(t_stack **head, t_stack *new)
-{
-	new->next = new;
-	new->prev = new;
-	*head = new;
-	//ft_printf("\nADDING FIRST STACK\n");
-	return (1);
-}
 
 int	add_stack(t_stack **head, int value)
 {

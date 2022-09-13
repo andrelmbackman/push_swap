@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 13:07:26 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:16:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ int		check_stacks(t_pusha *stacks);
 int		free_stacks(t_pusha *stacks, int status);
 int		check_ints(t_pusha *stacks, int ac, char **input);
 int		add_stack(t_stack **head, int value);
-int		first_stack(t_stack **head, t_stack *new);
 int		sort_small(t_pusha *stacks);
 int		sort_three(t_pusha *stacks);
 int		sort_five(t_pusha *stacks);
