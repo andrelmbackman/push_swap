@@ -5,20 +5,18 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
-- [] checker segfaults at empty input or faulty input
-- [] save all moves, then check all moves
-- [] protect malloc, leaks, free all nodes in case of malloc fail..
-- [] test all sizes, all int overloads, all flags, all atoll errors, -0, +1..
-- [] double check the makefile errors, such as no program found = no recompile make re
-- [] check for unused functions and variables
-- [] norm
+- [ ] SIGSEGV 36 37 4 7 11
+- [x] bonuses: fix print_stacks() last print and possible width issues
 
-- [] SEGFAULTS: 1 0 1/2, 
-- [] weirdness: -1 -0 1-12+11 = -1 0 1
-
-- [] bonuses: fix print_stacks() last print and possible width issues
 - [] Make use of -c and -v flags? only one at a time, if after numbers, display
 usage message and exit.
+- [x] -v (in checker only displays last one?)
+
+
+- [] double check the makefile errors, such as no program found = no recompile make re
+- [] unused variables
+- [] norm
+
 
 - [] MAKEFILE: remove -g flag from checker, push_swap, libft and ft_printf, compile so that just writing #include "push_swap.h" works
 
@@ -26,6 +24,7 @@ NORM:
 - checker [x]
 - push_swap []
 - utilities []
+
 BEST:
 100: 646 - 852
 500: 6084 - 7236
