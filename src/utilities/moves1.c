@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:43:00 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 11:27:57 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:12:57 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	exec_sa(t_pusha *stacks)
 {
 	int	tmp;
 
-	if ((stacks->a_size < 2) || (stacks->a_stack->next == NULL))
+	if (stacks->a_size < 2)
 		return (0);
 	tmp = stacks->a_stack->num;
 	stacks->a_stack->num = stacks->a_stack->next->num;
@@ -30,7 +30,7 @@ int	exec_sb(t_pusha *stacks)
 {
 	int	tmp;
 
-	if ((stacks->b_size) < 2 || (stacks->b_stack->next == NULL))
+	if (stacks->b_size < 2)
 		return (0);
 	tmp = stacks->b_stack->num;
 	stacks->b_stack->num = stacks->b_stack->next->num;
@@ -50,13 +50,13 @@ int	exec_ss(t_pusha *stacks)
 		write_move = 1;
 		stacks->print = 0;
 	}
-	if (!exec_sa(stacks) || !exec_sb(stacks))
+	if (!exec_sa(stacks) && !exec_sb(stacks))
 	{
 		if (write_move)
 			stacks->print = 1;
 		return (0);
 	}
-	if (write_move)
+	else if (write_move)
 	{
 		write(1, "ss\n", 3);
 		stacks->print = 1;
