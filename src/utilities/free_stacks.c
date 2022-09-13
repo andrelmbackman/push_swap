@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 14:45:04 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:52:16 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 {
-	if (*a != NULL && (*a)->next != stacks->a_stack)
+	if (*a != NULL)
 	{
-		ft_printf("| %10d\t|", (*a)->num);
+		ft_printf("| %12d\t|", (*a)->num);
 		*a = (*a)->next;
+		if (*a == stacks->a_stack)
+			*a = NULL;
 	}
 	else
 		ft_printf("|\t        |");
-	if (*b != NULL && (*b)->next != stacks->b_stack)
+	if (*b != NULL)
 	{
-		ft_printf(" %10d\t|\n", (*b)->num);
+		ft_printf(" %12d\t|\n", (*b)->num);
 		*b = (*b)->next;
+		if (*b == stacks->b_stack)
+			*b = NULL;
 	}
 	else
 		ft_printf("\t        |\n");
-	if ((!*a || (*a)->next == stacks->a_stack) && (!*b || \
-	(*b)->next == stacks->b_stack))
+	if (!*a && !*b)
 		return (0);
 	return (1);
 }
@@ -46,14 +49,6 @@ void	print_stacks(t_pusha *stacks)
 	ft_printf("\n|\tStack A | Stack B\t|\n+-------------------------------+\n");
 	while (i)
 		i = print_ab(stacks, &atmp, &btmp);
-	if (atmp != NULL)
-		ft_printf("| %10d\t|", atmp->num);
-	else
-		ft_printf("|\t        |");
-	if (btmp != NULL)
-		ft_printf(" %10d\t|\n", btmp->num);
-	else
-		ft_printf("\t        |\n");
 	ft_printf("+-------------------------------+\n");
 }
 
