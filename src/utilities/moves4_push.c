@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves4.c                                           :+:      :+:    :+:   */
+/*   moves4_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:39:28 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 17:45:36 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 19:35:18 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	check_write(t_pusha *stacks, char *str)
 		write(1, str, 3);
 	if (stacks->v)
 		print_stacks(stacks);
+	//ft_printf("\nstacks->a size: %d a->prev: %d\n", stacks->a_size, stacks->a_stack->prev->num);
 	return (1);
 }
 
