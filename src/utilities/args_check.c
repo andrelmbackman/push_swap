@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 14:09:33 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:20:14 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,12 @@ static int	validate_string(t_pusha *stacks, char *str)
 
 	ret = 0;
 	i = 0;
+	if (!ft_strncmp((const char *)str, (const char *)"-v", 2))
+	{
+		stacks->v = 1;
+		str += 2;
+		//ft_printf("\n-v flag found \"%s\"\n", str);
+	}
 	if (invalid_chars(str))
 		return (free_stacks(stacks, ERROR));
 	while (str[i])

@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 13:16:45 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:13:19 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	check_stacks(t_pusha *stacks)
 
 	head = stacks->a_stack;
 	tmp = head;
+	//print_stacks(stacks);
 	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (free_stacks(stacks, KO));
 	//ft_printf("Checking stack a: %d\nsize: %d\n\n", stacks->a_stack->num, stacks->a_size);
@@ -86,11 +87,11 @@ int	check_stacks(t_pusha *stacks)
 		}
 		tmp = tmp->next;
 	}
-	 if (tmp->num < tmp->next->num)
-	 {
+	if (tmp->num < tmp->next->num)
+	{
 		//ft_printf("\nlast num is smaller than the next\n");
 		return (free_stacks(stacks, KO));
-	 }
+	}
 	return (free_stacks(stacks, OK));
 }
 
@@ -103,12 +104,14 @@ t_pusha	*init_stacks(void)
 		return (NULL);
 	stacks->a_stack = NULL;
 	stacks->b_stack = NULL;
-	stacks->a_size = 0;
-	stacks->b_size = 0;
+	stacks->valid_moves = NULL;
 	stacks->min = 0;
 	stacks->max = 0;
+	stacks->a_size = 0;
+	stacks->b_size = 0;
 	stacks->empty = 1;
 	stacks->print = 0;
+	stacks->v = 0;
 	stacks->chunk_no = 12;
 	stacks->chunk_top = 0;
 	stacks->chunk_bot = 0;
