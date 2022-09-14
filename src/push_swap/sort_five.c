@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:00:47 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 18:05:29 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/14 18:17:41 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,23 @@ static int	numbers_match(t_stack *a, t_stack *b, int x, int y)
 	return (0);
 }
 
-/* static void	find_double_move(t_pusha *stacks)
+static void	find_double_move(t_pusha *stacks)
 {
 	t_stack	*a;
 
 	a = stacks->a_stack;
 	if (stacks->b_stack->num < stacks->b_stack->next->num)
 	{
-		if (a->num > a->next->num && a->next->num < a->prev->num && \
-	a->prev->num > a->num)
+		if (a->prev == a->dst_next || a->next == a->dst_prev)
 			exec_ss(stacks);
-		else if (a->num > a->next->num && a->next->num < a->prev->num && \
-	a->prev->num < a->num)
-			exec_rrr(stacks);
-		else if (a->num < a->next->num && a->next->num > a->prev->num && \
-	a->prev->num < a->num)
+		else if (a->prev == a->dst_prev && a->num == stacks->max)
+			exec_rr(stacks);
+		else if (a->prev == a->dst_prev)
 			exec_rrr(stacks);
 	}
-} */
+}
 
-static void	find_double_move(t_pusha *stacks)
+/* static void	find_double_move(t_pusha *stacks)
 {
 	t_stack	*a;
 
@@ -54,7 +51,7 @@ static void	find_double_move(t_pusha *stacks)
 		else if (a->num > a->next->num)
 			exec_ss(stacks);
 	}
-}
+} */
 
 static int	ra_push(t_pusha *stacks, int min)
 {
@@ -67,6 +64,8 @@ static int	ra_push(t_pusha *stacks, int min)
 		else
 			exec_ra(stacks);
 	}
+	if (sorted(stacks))
+		return (1);
 	find_double_move(stacks);
 	if (stacks->b_stack->num < stacks->b_stack->next->num)
 		exec_sb(stacks);
@@ -84,6 +83,8 @@ static int	rra_push(t_pusha *stacks, int min)
 		else
 			exec_rra(stacks);
 	}
+	if (sorted(stacks))
+		return (1);
 	find_double_move(stacks);
 	if (stacks->b_stack->num < stacks->b_stack->next->num)
 		exec_sb(stacks);
@@ -94,21 +95,18 @@ int	sort_five(t_pusha *stacks)
 {
 	int		min_save;
 	t_stack	*a;
-	t_stack	*head;
 
 	min_save = stacks->min;
 	a = stacks->a_stack;
-	head = stacks->a_stack;
-	stacks->min = 2147483647;
-	while (a->next != head)
+	while (a->next != stacks->a_stack)
 	{
-		if (a->num > min_save && a->num < stacks->min)
-			stacks->min = a->num;
+		if (a->num == stacks->min)
+			min_save = a->dst_next->num;
 		a = a->next;
 	}
-	if (a->num > min_save && a->num < stacks->min)
-			stacks->min = a->num;
-	//ft_printf("\nmin: %d 2nd: %d\n", min_save, stacks->min);
+	if (a->num == stacks->min)
+			min_save = a->dst_next->num;
+	//ft_printf("\nmin_save: %d min: %d\n", min_save, stacks->min);
 	a = a->next;
 	if (numbers_match(a->prev, a->next->next, stacks->min, min_save) \
 	|| numbers_match(a->prev, a->prev->prev, stacks->min, min_save))
