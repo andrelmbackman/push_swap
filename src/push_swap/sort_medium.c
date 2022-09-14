@@ -6,11 +6,17 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:33:09 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 15:12:40 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/14 18:54:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** node_direction looks for 'num' in the stack and returns 1 if it is
+** in the first half, -1 if it is in the second half or 0 if it cannot
+** be found or if it is at the top of the stack
+*/
 
 static int	node_direction(t_stack *a, int size, int num)
 {
@@ -19,7 +25,6 @@ static int	node_direction(t_stack *a, int size, int num)
 
 	i = 0;
 	tmp = a;
-	//ft_printf("\ndirection >> num: %d size; %d\n", num, size);
 	if (tmp == NULL)
 		return (0);
 	while (tmp->next != a)
@@ -29,14 +34,17 @@ static int	node_direction(t_stack *a, int size, int num)
 		tmp = tmp->next;
 		i++;
 	}
-	//ft_printf("tmp->num: %d\n", tmp->num);
 	if (tmp->num != num || i == 0)
 		return (0);
-	else if (i < (size / 2))
+	else if (i <= (size / 2))
 		return (1);
 	else
 		return (-1);
 }
+
+/*
+** pushes back the whole b_stack from the biggest to the smallest number
+*/
 
 static void	pushback_med(t_pusha *stacks)
 {
@@ -60,6 +68,10 @@ static void	pushback_med(t_pusha *stacks)
 	}
 }
 
+/*
+** simple sorting optimized for stack sizes ranging from 6 to 23 numbers.
+*/
+
 int	sort_medium(t_pusha *stacks)
 {
 	int	num;
@@ -68,27 +80,19 @@ int	sort_medium(t_pusha *stacks)
 	while (stacks->a_size > 3)
 	{
 		num = find_smallest(stacks->a_stack);
-		//ft_printf("\nsmallest is: %d\n", num);
 		if (node_direction(stacks->a_stack, stacks->a_size, num) > 0)
 		{
-			//ft_printf("\nwill do ra\n");
 			while (stacks->a_stack->num != num)
 				exec_ra(stacks);
 		}
 		else
 		{
-			//ft_printf("\nwill do rra\n");
 			while (stacks->a_stack->num != num)
 				exec_rra(stacks);
 		}
 		exec_pb(stacks);
-		//print_stacks(stacks);
 	}
 	sort_three(stacks);
 	pushback_med(stacks);
-	//print_stacks(stacks);
-	//if (!sorted(stacks))
-	//	final_rotate(stacks);
-	//print_stacks(stacks);
 	return (0);
 }
