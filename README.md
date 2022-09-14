@@ -5,7 +5,9 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
-- [ ] SIGSEGV 36 37 4 7 11
+4 2 3 1 5 = 10 moves ---> 8 moves, but segfault when:
+- [x] SIGSEGV 36 37 4 7 11 || 4 5 1 2 3
+1 4 3 2 5 = 9 moves
 - [x] bonuses: fix print_stacks() last print and possible width issues
 
 - [] Make use of -c and -v flags? only one at a time, if after numbers, display
