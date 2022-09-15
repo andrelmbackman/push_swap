@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:14:55 by abackman          #+#    #+#             */
-/*   Updated: 2022/08/30 11:26:29 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:26:29 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ void	add_head(t_stack *stack, t_stack *new)
 		new = NULL;
 }
 
+/*
+** Adds the *new node to the empty *stack. If it was the last node of the *new
+** list, it is pointed to NULL.
+*/
+
 void	add_to_empty(t_stack *stack, t_stack *new)
 {
-	/* t_stack	*head;
-
-	//ft_printf("\nadding to empty,\nnum = %d\nstack = %p\n\n", new->num, stack);
-	head = new;
-	head->next = head;
-	head->prev = head;
-	stack = head; */
 	stack = new;
 	stack->next = stack;
 	stack->prev = stack;
