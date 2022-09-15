@@ -6,11 +6,16 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:56:19 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/14 18:49:07 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:03:41 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Assigns the appropriate number of chunks to divide into (where applicable),
+** then calls the appropriate sorting functions for the given stack size.
+*/
 
 static int	sort_stacks(t_pusha *stacks)
 {
