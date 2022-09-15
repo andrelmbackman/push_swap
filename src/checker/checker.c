@@ -6,11 +6,16 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 13:28:30 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:49:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Iterates through the linked list of saved operations (moves) and executes
+** them.
+*/
 
 static int	exec_moves(t_pusha *stacks, t_move *head)
 {
@@ -29,6 +34,11 @@ static int	exec_moves(t_pusha *stacks, t_move *head)
 		return (-1);
 	return (1);
 }
+
+/*
+** Checks whether or not the operations saved are valid ones. Returns 1 if only
+** valid moves, -1 if an invalid move and 0 if no moves were found.
+*/
 
 static int	valid_move(t_move *head, char **valid)
 {
@@ -59,6 +69,11 @@ static int	valid_move(t_move *head, char **valid)
 	return (1);
 }
 
+/*
+** Adds a new node at the end of the linked list t_moves and saves the input
+** (char *buf) in it.
+*/
+
 static int	add_move(t_move **head, char *buf)
 {
 	t_move	*new;
@@ -82,6 +97,12 @@ static int	add_move(t_move **head, char *buf)
 	tmp->next = new;
 	return (1);
 }
+
+/*
+** Reads from standard input until "end of file" (ctrl + D) and saves all input
+** in a linked list. If moves are valid they are executed and then the stacks
+** are checked.
+*/
 
 static int	moves_check(t_pusha *stacks)
 {
