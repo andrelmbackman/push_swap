@@ -6,11 +6,17 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:39:28 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 19:35:18 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:37:51 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Checks in the t_pusha struct whether or not the operation/move (str) should
+** be written out to stdout. Also checks if the -v flag was given, and if so
+** the stacks in their current state will be written out to stdout.
+*/
 
 static int	check_write(t_pusha *stacks, char *str)
 {
@@ -18,13 +24,12 @@ static int	check_write(t_pusha *stacks, char *str)
 		write(1, str, 3);
 	if (stacks->v)
 		print_stacks(stacks);
-	//ft_printf("\nstacks->a size: %d a->prev: %d\n", stacks->a_size, stacks->a_stack->prev->num);
 	return (1);
 }
 
 /*
-** exec_pa takes out a node from the circular double linked list of the b_stack
-** and inserts it at the top of the the a_stack
+** Exec_pa takes out a node from the circular double linked list of the b_stack
+** and inserts it at the top of the the a_stack.
 */
 
 int	exec_pa(t_pusha *stacks)
@@ -54,10 +59,9 @@ int	exec_pa(t_pusha *stacks)
 }
 
 /*
-** exec_pb takes out a node from the circular double linked list of the a_stack
+** Exec_pb takes out a node from the circular double linked list of the a_stack
 ** and inserts it at the top of the b_stack
 */
-
 
 int	exec_pb(t_pusha *stacks)
 {
@@ -80,7 +84,7 @@ int	exec_pb(t_pusha *stacks)
 	stacks->b_stack = tmp;
 	stacks->a_size--;
 	stacks->b_size++;
-	 if (nullify)
+	if (nullify)
 		stacks->a_stack = NULL;
 	return (check_write(stacks, "pb\n"));
 }
