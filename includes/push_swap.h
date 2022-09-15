@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 16:13:11 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:28:22 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int		find_biggest(t_stack *b);
 int		find_quickest(t_stack *b, int *goal);
 int		sort_big(t_pusha *stacks, int count);
 int		rotate_pushback(t_pusha *stacks);
+int		checker_help(void);
 t_pusha	*init_stacks(void);
 
 #endif
