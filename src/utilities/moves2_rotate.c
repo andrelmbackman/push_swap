@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves2.c                                           :+:      :+:    :+:   */
+/*   moves2_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:17:28 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 17:45:09 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:34:09 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Rotates the a_stack so that the first node will become the last. If called
+** by push_swap it will write the command to stdout.
+*/
 
 int	exec_ra(t_pusha *stacks)
 {
@@ -24,6 +29,11 @@ int	exec_ra(t_pusha *stacks)
 	return (1);
 }
 
+/*
+** Rotates the b_stack so that the first node will become the last. If called
+** by push_swap it will write the command to stdout.
+*/
+
 int	exec_rb(t_pusha *stacks)
 {
 	if (!stacks->b_stack)
@@ -35,6 +45,11 @@ int	exec_rb(t_pusha *stacks)
 		print_stacks(stacks);
 	return (1);
 }
+
+/*
+** Rotates both stacks so that the first node will become the last. If called
+** by push_swap it will write the command to stdout.
+*/
 
 int	exec_rr(t_pusha *stacks)
 {
