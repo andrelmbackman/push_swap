@@ -6,26 +6,18 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:11:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 13:44:58 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:01:04 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /*
- * Init both dst to 0, this will be untrue since it needs to be above 5 size
- */
-/* typedef struct	s_chunk
-{
-	int				min;
-	int				max;
-	int				size;
-	t_stack			*first;
-	t_stack			*last;
-	struct s_chunk	*next;
-	struct s_chunk	*prev;
-}	t_chunk;
- */
+** Assigns a chunk number in ascending order to each node of t_stack *first.
+** Size is the size of the stack and chunks is the number of chunks it should
+** be divided into.
+*/
+
 static void	get_chunks(t_stack *first, int size, int chunks)
 {
 	t_stack	*tmp;
@@ -43,15 +35,18 @@ static void	get_chunks(t_stack *first, int size, int chunks)
 		while (++x <= size / count && tmp->dst_next != first)
 		{
 			tmp->chunk = chunk_no;
-			//ft_printf("get_chunks -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 			tmp = tmp->dst_next;
 		}
 		if (chunk_no < count)
 			chunk_no++;
 	}
 	tmp->chunk = chunk_no;
-	//ft_printf("get_chunks -  num: %d chunk: %d\n", tmp->num, tmp->chunk);
 }
+
+/*
+** Iterates through the t_stack list, in the order it was given, to find which
+** node should come before (dst_prev) and after (dst_next) when sorted.
+*/
 
 static void	get_neighbor(t_stack *first, t_stack *a)
 {
@@ -82,9 +77,15 @@ static void	get_neighbor(t_stack *first, t_stack *a)
 		a->dst_next = tmp;
 }
 
+/*
+** Iterates through the a_stack and finds the destined prev and next pointers
+** of each node. If the number of ints given is 24 or larger, the stack will
+** be divided into chunks, for optimized sorting.
+*/
+
 void	get_destined(t_pusha *stacks, int min, int max, int size)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	t_stack	*first;
 	t_stack	*last;
 
@@ -107,16 +108,6 @@ void	get_destined(t_pusha *stacks, int min, int max, int size)
 		last = tmp;
 	first->dst_prev = last;
 	last->dst_next = first;
-	//ft_printf("\nmin: %d max: %d first: %p last: %p\n", min, max, first, last);
 	if (size > 23)
 		get_chunks(first, size, stacks->chunk_no);
-	/* t_stack	*test = a;
-	while (test->next != a)
-	{
-		ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
-		test->num, test->prev->num, test->next->num, test->dst_prev->num, test->dst_next->num);
-		test = test->next;
-	}
-	ft_printf("\nnum: %d prev: %d next: %d\ndst_prev: %d dst_next: %d\n", \
-		test->num, test->prev->num, test->next->num, test->dst_prev->num, test->dst_next->num); */
 }
