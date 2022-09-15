@@ -11,7 +11,7 @@ src/push_swap/sort_big.c src/push_swap/sort_helpers.c \
 
 ALLSRC = src/utilities/moves1_swap.c src/utilities/moves2_rotate.c\
 src/utilities/moves3_rrotate.c src/utilities/moves4_push.c\
-src/utilities/stacks.c src/utilities/free_stacks.c\
+src/utilities/stacks.c src/utilities/free_print_stacks.c\
 src/utilities/moves_helpers.c src/utilities/args_check.c
 
 OBJS = $(addsuffix .o,$(basename $(notdir CHECKSRC)))
