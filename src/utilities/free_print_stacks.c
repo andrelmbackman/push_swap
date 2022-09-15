@@ -6,11 +6,16 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 14:52:16 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:22:43 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Called by print_stacks to print out one number of stack a and b, or empty
+** space if the stack is null or the bottom of the stack is reached.
+*/
 
 static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 {
@@ -37,6 +42,10 @@ static int	print_ab(t_pusha *stacks, t_stack **a, t_stack **b)
 	return (1);
 }
 
+/*
+** Prints out the state of the stacks on the standard output.
+*/
+
 void	print_stacks(t_pusha *stacks)
 {
 	int		i;
@@ -51,6 +60,11 @@ void	print_stacks(t_pusha *stacks)
 		i = print_ab(stacks, &atmp, &btmp);
 	ft_printf("+-------------------------------+\n");
 }
+
+/*
+** Outputs a message to either the standard output or standard error depending
+** on status.
+*/
 
 int	return_status(int status)
 {
@@ -70,6 +84,10 @@ int	return_status(int status)
 		return (0);
 	}
 }
+
+/*
+** Frees a whole stack.
+*/
 
 static int	del_stack(t_stack *stack)
 {
@@ -93,10 +111,12 @@ static int	del_stack(t_stack *stack)
 	return (1);
 }
 
+/*
+** Frees a_stack, b_stack and main struct t_pusha.
+*/
+
 int	free_stacks(t_pusha *stacks, int status)
 {
-	//if (!stacks->print)
-	//	print_stacks(stacks);
 	if (stacks->a_size && stacks->a_stack != NULL)
 		del_stack(stacks->a_stack);
 	if (stacks->b_size && stacks->b_stack != NULL)
