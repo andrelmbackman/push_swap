@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 14:00:10 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:28:30 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,21 @@
 
 static int	exec_moves(t_pusha *stacks, t_move *head)
 {
-	t_move *tmp;
+	t_move	*tmp;
 
 	tmp = head;
 	if (head == NULL)
 		return (0);
-	//print_stacks(stacks);
 	while (tmp->next != NULL)
 	{
 		g_pushtable[tmp->index](stacks);
 		tmp = tmp->next;
 	}
 	g_pushtable[tmp->index](stacks);
-	//print_stacks(stacks);
 	if (stacks == NULL || head == NULL)
 		return (-1);
 	return (1);
 }
-
-
-/* static int	exec_move(t_pusha *stacks, int status)
-{
-	if (stacks == NULL || status == -1)
-		return (-1);
-	return (g_pushtable[status](stacks));
-} */
 
 static int	valid_move(t_move *head, char **valid)
 {
@@ -46,12 +36,9 @@ static int	valid_move(t_move *head, char **valid)
 	int		ret;
 	t_move	*tmp;
 
-	i = 0;
-	ret = 0;
 	tmp = head;
 	if (head == NULL)
 		return (0);
-	//ft_printf("\n%s\n", head->str);
 	while (tmp != NULL)
 	{
 		ret = 0;
@@ -62,7 +49,6 @@ static int	valid_move(t_move *head, char **valid)
 			{
 				ret = 1;
 				tmp->index = i;
-				//ft_printf("\nvalid_move\n");
 			}
 			i++;
 		}
@@ -72,20 +58,6 @@ static int	valid_move(t_move *head, char **valid)
 	}
 	return (1);
 }
-
-/* static int	valid_move(char *buf, char **valid)
-{
-	int	i;
-
-	i = 0;
-	while (valid[i] != NULL)
-	{
-		if (!ft_strcmp((const char *)valid[i], (const char *)buf))
-			return (i);
-		i++;
-	}
-	return (-1);
-} */
 
 static int	add_move(t_move **head, char *buf)
 {
@@ -102,14 +74,12 @@ static int	add_move(t_move **head, char *buf)
 	if (*head == NULL)
 	{
 		*head = new;
-		//ft_printf("\nadd_move; new->str: %s\n", new->str);
 		return (1);
 	}
 	tmp = *head;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new;
-	//ft_printf("\nadd_move; new->str: %s\n", new->str);
 	return (1);
 }
 
@@ -133,7 +103,6 @@ static int	moves_check(t_pusha *stacks)
 			ft_strdel(&buf);
 	}
 	status = valid_move(head, stacks->valid_moves);
-	//print_stacks(stacks);
 	if (status < 0)
 		return (free_all(stacks, &head, status));
 	else
@@ -142,33 +111,6 @@ static int	moves_check(t_pusha *stacks)
 	ft_free_arr(stacks->valid_moves, (size_t)11);
 	return (check_stacks(stacks));
 }
-
-/* static int	moves_check(t_pusha *stacks)
-{
-	int		status;
-	char	*buf;
-	t_move	*head;
-
-	status = 0;
-	head = NULL;
-	while (1)
-	{
-		if (!get_next_line((const int)STDIN_FILENO, &buf))
-			break ;
-		status = valid_move(buf, stacks->valid_moves);
-		ft_strdel(&buf);
-		if (status == -1)
-		{
-			ft_free_arr(stacks->valid_moves, (size_t)11);
-			return (free_stacks(stacks, ERROR));
-		}
-		else
-			exec_move(stacks, status);
-	}
-	ft_strdel(&buf);
-	return (check_stacks(stacks));
-}
- */
 
 int	main(int ac, char **av)
 {
