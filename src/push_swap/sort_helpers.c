@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abackman <abackman@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/09 14:37:17 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:01:45 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Iterates through the stack and returns the biggest integer found.
+*/
 
 int	find_biggest(t_stack *b)
 {
@@ -27,9 +31,12 @@ int	find_biggest(t_stack *b)
 	}
 	if (tmp->num >= max)
 			max = tmp->num;
-	//ft_printf("\nmax: %d\n", max);
 	return (max);
 }
+
+/*
+** Iterates through the stack and returns the smallest integer found.
+*/
 
 int	find_smallest(t_stack *b)
 {
@@ -46,18 +53,27 @@ int	find_smallest(t_stack *b)
 	}
 	if (tmp->num <= min)
 			min = tmp->num;
-	//ft_printf("\nmax: %d\n", max);
 	return (min);
 }
 
+/*
+** Helper function for find_quickest. Returns 1 if the rotating direction
+** should be RA/RB and -1 if it should be RRA/RRB.
+*/
+
 static int	find_quickest_return(int front, int back, int *goal)
 {
-	//ft_printf("\ngoing mad. front: %d back: %d goal :%d\n", front, back, *goal);
 	if (front == *goal && back != *goal)
 		return (1);
 	else
 		return (-1);
 }
+
+/*
+** Finds the smallest and biggest number in the stack, decides which one of them
+** requires fewer moves to rotate to the top and assigns that number to *goal.
+** Returns either 1 or -1 depending on the direction of the rotation.
+*/
 
 int	find_quickest(t_stack *b, int *goal)
 {
@@ -84,31 +100,28 @@ int	find_quickest(t_stack *b, int *goal)
 		*goal = max;
 	else
 		*goal = min;
-	//ft_printf("\nfind_quickest max: %d, min: %d goal: %d\nfront: %d back: %d\n", max, min, *goal, front->num, back->num);
 	return (find_quickest_return(front->num, back->num, goal));
 }
 
+/*
+** Pushes back all of b_stack to a_stack. Rotates either the smallest or largest
+** number to the top of b_stack (whichever is quicker), pushes it to a_stack and
+** if it was the smallest one it is rotated to the bottom of a_stack.
+*/
 
 int	rotate_pushback(t_pusha *stacks)
 {
 	int		goal;
-	t_stack	*tmp;
+	int		dir;
 
 	goal = 0;
 	while (stacks->b_stack != NULL)
 	{
-		tmp = stacks->b_stack;
-		if (find_quickest(stacks->b_stack, &goal) < 0)
-		{
-			//ft_printf("\ngoal: %d\n", goal);
-			while (stacks->b_stack->num != goal)
-				exec_rrb(stacks);
-		}
-		else
-		{
-			while (stacks->b_stack->num != goal)
-				exec_rb(stacks);
-		}
+		dir = find_quickest(stacks->b_stack, &goal);
+		while (stacks->b_stack->num != goal && dir < 0)
+			exec_rrb(stacks);
+		while (stacks->b_stack->num != goal && dir > 0)
+			exec_rb(stacks);
 		exec_pa(stacks);
 		if (stacks->b_stack == NULL)
 			break ;
@@ -120,62 +133,5 @@ int	rotate_pushback(t_pusha *stacks)
 				exec_ra(stacks);
 		}
 	}
-	//print_stacks(stacks);
 	return (1);
 }
-
-/* int	rotate_pushback(t_pusha *stacks)
-{
-	t_stack	*tmp;
-	int		i;
-	int		max;
-
-	while (stacks->b_stack != NULL && stacks->b_size)
-	{
-		tmp = stacks->b_stack;
-		i = 0;
-		max = find_biggest(stacks->b_stack);
-		while (tmp->num != max)
-		{
-			i++;
-			tmp = tmp->next;
-		}
-		//ft_printf("\ntmp->num: %d\n", tmp->num);
-		if (i > (stacks->b_size / 2))
-		{
-			while (stacks->b_stack->num != max)
-				exec_rrb(stacks);
-		}
-		else
-		{
-			while (stacks->b_stack->num != max)
-				exec_rb(stacks);
-		}
-		exec_pa(stacks);
-	}
-	return (1);
-} */
-
-/* int	rotate_before_push(t_pusha *stacks, int goal, int direction)
-{
-	//ft_printf("\nrotate_before_push goal: %d, dir: %d\n", goal, direction);
-	if (direction > 0)
-	{
-		while (stacks->a_stack->num != goal)
-		{
-			//if (stacks->a_stack->num == find_smallest(stacks->a_stack))
-			//{
-			//	exec_pb(stacks);
-			//	exec_rr(stacks);
-			//}
-			//else
-				exec_ra(stacks);
-		}
-	}
-	else
-	{
-		while (stacks->a_stack->num != goal)
-			exec_rra(stacks);
-	}
-	return (1);
-} */
