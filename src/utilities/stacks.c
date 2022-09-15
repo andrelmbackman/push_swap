@@ -6,20 +6,27 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:21:02 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/13 16:13:19 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:46:11 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Adds *new to the circular doubly-linked list of **head.
+*/
 
 static int	first_stack(t_stack **head, t_stack *new)
 {
 	new->next = new;
 	new->prev = new;
 	*head = new;
-	//ft_printf("\nADDING FIRST STACK\n");
 	return (1);
 }
+
+/*
+** Returns 1 if all the numbers are sorted and in a_stack, 0 if not.
+*/
 
 int	sorted(t_pusha *stacks)
 {
@@ -28,7 +35,6 @@ int	sorted(t_pusha *stacks)
 
 	head = stacks->a_stack;
 	tmp = head;
-	//ft_printf("\nAre they sorted?\n");
 	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (0);
 	while (tmp->next != head && stacks->a_size > 1)
@@ -37,19 +43,20 @@ int	sorted(t_pusha *stacks)
 			return (0);
 		tmp = tmp->next;
 	}
-	 if (tmp->num < tmp->next->num)
+	if (tmp->num < tmp->next->num)
 		return (0);
-	//ft_printf("\nThey are sorted\n");
 	return (1);
 }
 
+/*
+** Creates a new node at the top of the stack with value as it's number.
+*/
 
 int	add_stack(t_stack **head, int value)
 {
 	t_stack	*new;
 	t_stack	*last;
 
-	//ft_printf("Are we adding a stack?\n");
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return (0);
@@ -67,6 +74,10 @@ int	add_stack(t_stack **head, int value)
 	return (1);
 }
 
+/*
+** Checks the state of the stacks and calls a function to free them.
+*/
+
 int	check_stacks(t_pusha *stacks)
 {
 	t_stack	*head;
@@ -74,26 +85,23 @@ int	check_stacks(t_pusha *stacks)
 
 	head = stacks->a_stack;
 	tmp = head;
-	//print_stacks(stacks);
 	if (stacks->b_size != 0 || stacks->b_stack != NULL)
 		return (free_stacks(stacks, KO));
-	//ft_printf("Checking stack a: %d\nsize: %d\n\n", stacks->a_stack->num, stacks->a_size);
 	while (tmp->next != head && stacks->a_size > 1)
 	{
 		if (tmp->num > tmp->next->num)
-		{
-			//ft_printf("\nnumber is larger than the next\n");
 			return (free_stacks(stacks, KO));
-		}
 		tmp = tmp->next;
 	}
 	if (tmp->num < tmp->next->num)
-	{
-		//ft_printf("\nlast num is smaller than the next\n");
 		return (free_stacks(stacks, KO));
-	}
 	return (free_stacks(stacks, OK));
 }
+
+/*
+** Initializes the main struct, allocating space for it and initializing it's
+** variables and then returning it.
+*/
 
 t_pusha	*init_stacks(void)
 {
