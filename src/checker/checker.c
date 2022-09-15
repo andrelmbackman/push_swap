@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 13:49:52 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:26:36 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ int	main(int ac, char **av)
 	ret = 0;
 	if (ac < 2)
 		return (1);
+	if (!ft_strcmp((const char *)av[1], (const char *)"-h"))
+		return (checker_help());
 	stacks = init_stacks();
 	if (stacks == NULL)
 		return (return_status(ERROR));

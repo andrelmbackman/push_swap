@@ -6,11 +6,27 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:33:53 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 13:51:44 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:34:14 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+** Displays a help message for the checker program.
+*/
+
+int	checker_help(void)
+{
+	ft_printf("usage: ./checker [any amount of unique integers]\n");
+	ft_printf("The checker will then wait for instructions, valid ones are: ");
+	ft_printf("\nsa sb ss pa pb ra rb rr rra rrb rrr\n");
+	ft_printf("After the instructions are given, to flush input: [ctrl] + [D]");
+	ft_printf("\nChecker will then display either OK if the instructions\n \
+	sorted the stacks, KO if they didn't and error in case of invalid \
+	moves.\n");
+	return (0);
+}
 
 /*
 ** Frees the whole linked list t_move.
