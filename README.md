@@ -5,28 +5,27 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
-- --h (help flag)
-4 2 3 1 5 = 10 moves ---> 8 moves, but segfault when:
-- [x] SIGSEGV 36 37 4 7 11 || 4 5 1 2 3
-1 4 3 2 5 = 9 moves
-- [x] bonuses: fix print_stacks() last print and possible width issues
+- [] visualizer: pygame
+https://docs.python.org/3/library/subprocess.html
 
-- [] Make use of -c and -v flags? only one at a time, if after numbers, display
-usage message and exit.
-- [x] -v (in checker only displays last one?)
+https://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating-pygame-window/
 
+https://www.geeksforgeeks.org/how-to-make-a-pygame-window/
+
+https://github.com/IanGaplichnik/42_Filler/blob/master/visualizer/vis.py
+
+- [] Provide tests
 
 - [] double check the makefile errors, such as no program found = no recompile make re
 - [] unused variables
-- [] norm
 
 
 - [] MAKEFILE: remove -g flag from checker, push_swap, libft and ft_printf, compile so that just writing #include "push_swap.h" works
 
 NORM:
 - checker [x]
-- push_swap []
-- utilities []
+- push_swap [x]
+- utilities [x]
 
 BEST:
 100: 646 - 852
@@ -51,10 +50,5 @@ of the way to fit them in
 - Push them back in general order, they will not be in perfect order until the
 whole subchunk is pushed back to A.
 
-- [ ] if not using dst_prev: deletet it from header and get_destined
-- [ ] Every check before pushing to b: check if SS, RR or RRR is useful.
-
 - [ ] protect from a huge number of ints?
-- [ ] protect against seg faults when doing -0, +1..
 https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-- make a script that uses curl to get 500 random ints
