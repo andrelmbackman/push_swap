@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:56:43 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/12 13:24:20 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:18:33 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	*ft_free_arr(char **str, size_t size)
 			ft_bzero(str[i], ft_strlen((const char *)str[i]));
 			free(str[i]);
 			str[i] = NULL;
-			//ft_strdel(&(str[i]));
 		}
 		i++;
 	}
