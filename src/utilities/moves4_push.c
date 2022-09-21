@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:39:28 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 15:37:51 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:13:36 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static int	check_write(t_pusha *stacks, char *str)
 {
 	if (stacks->print)
-		write(1, str, 3);
+		write(STDOUT_FILENO, str, 3);
 	if (stacks->v)
 		print_stacks(stacks);
 	return (1);
