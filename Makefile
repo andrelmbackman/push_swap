@@ -23,11 +23,11 @@ INCL = -I ./includes
 all: $(CHECKNAME) $(PUSHNAME)
 
 
-$(CHECKNAME): $(LIBS) $(CHECKSRC)
-	clang -g3 $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
+$(CHECKNAME): $(LIBS) $(CHECKSRC) $(ALLSRC)
+	gcc $(CFLAGS) $(INCL) -o $(CHECKNAME) $(CHECKSRC) $(ALLSRC) $(LIBS)
 
-$(PUSHNAME): $(LIBS) $(PUSHSRC)
-	clang -g3 $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(ALLSRC) $(LIBS)
+$(PUSHNAME): $(LIBS) $(PUSHSRC) $(ALLSRC)
+	gcc $(CFLAGS) $(INCL) -o $(PUSHNAME) $(PUSHSRC) $(ALLSRC) $(LIBS)
 
 $(LIBS):
 	@$(MAKE) -C ./libft/ all
@@ -36,8 +36,8 @@ clean:
 	@$(MAKE) -C ./libft/ clean
 
 fclean:
-	$(MAKE) -C ./libft fclean
-	/bin/rm $(CHECKNAME) $(PUSHNAME)
+	@$(MAKE) -C ./libft fclean
+	/bin/rm -f $(CHECKNAME) $(PUSHNAME)
 
 re: fclean all
 
