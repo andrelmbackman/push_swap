@@ -5,6 +5,17 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting."
 
+
+[DESCRIBE PROJECT]
+
+[DESCRIBE MOVES]
+
+[DESCRIBE ALGORITHM]
+
+[DESCRIBE LEARNINGS, MISTAKES]
+- radix sort was not efficient, too many operations following the rules of the project, pushing to stack b and then stack a a lot of times.
+- making 10 chunks and then looking for the biggest/smallest required quite a few moves to order them like that in b_stack and a lot of rotations to push them back in the right order to a_stack
+
 - [] visualizer: pygame
 https://docs.python.org/3/library/subprocess.html
 
@@ -13,31 +24,3 @@ https://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/creating
 https://www.geeksforgeeks.org/how-to-make-a-pygame-window/
 
 https://github.com/IanGaplichnik/42_Filler/blob/master/visualizer/vis.py
-
-- [] Provide tests
-
-- [] unused variables
-
-
-- [] MAKEFILE: remove -g flag from checker, push_swap, libft and ft_printf, compile so that just writing #include "push_swap.h" works
-
-
-
-BEST:
-
-100: 583 - 655
-500: 5018 - 5445
-
-
-
-
-PA: (PB: longest increasing subsequence?)
-PA: look for subchunks instead of largest to smallest, this will grant easier search,
-more use of RR, RRR, SS? - look for (10) numbers? push, get them in order, rotate out
-of the way to fit them in
-- Push them back in general order, they will not be in perfect order until the
-whole subchunk is pushed back to A.
-
-- [ ] protect from a huge number of ints?
-
-https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
