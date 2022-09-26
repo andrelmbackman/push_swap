@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:10:26 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 18:28:22 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:35:54 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_pusha
 
 typedef struct s_move
 {
-	char 			*str;
+	char			*str;
 	int				index;
 	struct s_move	*next;
 }	t_move;
@@ -80,7 +80,6 @@ int		exec_rr(t_pusha *stacks);
 int		exec_rra(t_pusha *stacks);
 int		exec_rrb(t_pusha *stacks);
 int		exec_rrr(t_pusha *stacks);
-
 
 /*
 ** Function pointer and dispatch table
