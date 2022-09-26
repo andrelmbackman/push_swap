@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:07:57 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 18:26:36 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:30:30 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,8 @@ int	main(int ac, char **av)
 	ret = 0;
 	if (ac < 2)
 		return (1);
-	if (!ft_strcmp((const char *)av[1], (const char *)"-h"))
+	if (!ft_strcmp((const char *)av[1], (const char *)"-h") || \
+	(!ft_strcmp((const char *)av[1], (const char *)"-v") && ac == 2))
 		return (checker_help());
 	stacks = init_stacks();
 	if (stacks == NULL)
@@ -151,7 +152,7 @@ int	main(int ac, char **av)
 	if (moves == NULL)
 		return (return_status(ERROR));
 	stacks->valid_moves = moves;
-	if (check_ints(stacks, ac, av) == -1)
+	if (check_ints(stacks, ac, av) < 1)
 	{
 		ft_free_arr(moves, (size_t)11);
 		return (-1);
