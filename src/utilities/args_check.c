@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:00:18 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/21 11:00:09 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:35:01 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,16 @@ static int	validate_ints(t_pusha *stacks, char *input)
 ** Returns 1 if the string is found to contain invalid characters, 0 if not.
 */
 
-static int	invalid_chars(char *str)
+static int	invalid_chars(t_pusha *stacks, char *str)
 {
 	int	i;
 	int	num;
 
 	i = 0;
 	num = 0;
-	if (str[i] == '\0')
+	if (!str)
+		return (0);
+	else if (str[0] == '\0')
 		return (0);
 	while (str[i])
 	{
@@ -86,7 +88,7 @@ static int	invalid_chars(char *str)
 			num = 1;
 		i++;
 	}
-	if (!num && (str[0] != '-' || str[1] != 'v'))
+	if (!num && !stacks->v)
 		return (1);
 	else
 		return (0);
@@ -109,7 +111,7 @@ static int	validate_string(t_pusha *stacks, char *str)
 		stacks->v = 1;
 		str += 2;
 	}
-	if (invalid_chars(str))
+	if (invalid_chars(stacks, str))
 		return (free_stacks(stacks, ERROR));
 	while (str[i])
 	{
