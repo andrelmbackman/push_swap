@@ -88,6 +88,7 @@ def	init():
 
 def	main():
 	run = True
+	solve = False
 	clock = pg.time.Clock()
 	sizenumber = 0
 	newstacksize = ''
@@ -108,7 +109,6 @@ def	main():
 	a_stack = random.sample(range(int(stackmin), int(stackmax)), int(stacksize))
 	b_stack = []
 	print(len(b_stack))
-	#istr = ['{:.2f}'.format(x) for x in a_stack]
 	jstr = [str(x) for x in a_stack]
 	x = 0
 	istr = " ".join(str(x) for x in jstr)
