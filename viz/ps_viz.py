@@ -5,7 +5,15 @@ from moves import *
 import sys
 sys.path.insert(0, '..')
 
-stacksize = int(300)
+
+if len(sys.argv) == 1:
+	print("\nUsage: python3 ps_viz.py [number between 2 and 500]")
+	exit(1)
+if int(sys.argv[1]) > 1 & int(sys.argv[1]) < 501:
+	stacksize = int(sys.argv[1])
+else:
+	print("\nUsage: python3 ps_viz.py [number between 2 and 500]")
+	exit(1)
 stackmin = int(-55555)
 stackmax = int(55555)
 stackrange = int((stackmax - stackmin))
@@ -35,7 +43,7 @@ color_inactive = pg.Color('lightskyblue3')
 color_active = pg.Color('dodgerblue2')
 width = 600
 height = 700
-solvespeed = 100
+solvespeed = 5
 screensize = (width,height)
 
 def	get_moves(ints):
@@ -55,6 +63,8 @@ def	draw_bar(array, i, screen, color, stack):
 	h -= 100
 	node_width = (w * ((array[i] + stackmax) / stackrange)) + 5
 	node_height = h / stacksize
+	if node_height < 1:
+		node_height = 1
 	x = 30
 	if stack == 'b':
 		x = 330
@@ -84,6 +94,11 @@ def	init():
 	screen = pg.display.set_mode((width, height))
 	screen.fill(background)
 	pg.display.set_caption("Push_swap visualizer")
+	#stacksize = int(sys.argv[1])
+	#print(type(stacksize), stacksize, type(sys.argv[1]))
+	#if stacksize < 2 | stacksize > 500:
+	#	print("\nUsage: python3 ps_viz.py [number between 2 and 500]")
+	#	exit(1)
 	return screen
 
 def	main():
@@ -95,7 +110,7 @@ def	main():
 	active = False
 	color = color_inactive
 	screen = init()
-	solvespeed = 10
+	solvespeed = 5
 
 	font = pg.font.Font(None, 32)
 	sizetext = font.render('size:', True, textcolor, background)
@@ -108,17 +123,12 @@ def	main():
 
 	a_stack = random.sample(range(int(stackmin), int(stackmax)), int(stacksize))
 	b_stack = []
-	print(len(b_stack))
 	jstr = [str(x) for x in a_stack]
 	x = 0
 	istr = " ".join(str(x) for x in jstr)
 	x = 0
 	ps_moves = get_moves(istr)
 	moves_len = len(ps_moves)
-	#print("istr: ", istr)
-	#ps_moves = get_moves(istr)
-	#print("a_stack: ", a_stack)
-	#print("ps moves: ", ps_moves)
 	while run:
 		for event in pg.event.get():
 			if event.type == pg.QUIT:
@@ -137,9 +147,9 @@ def	main():
 					elif event.key == pg.K_BACKSPACE:
 						newstacksize = newstacksize[:-1]
 					elif event.key == pg.K_UP:
-						solvespeed *= 1.5
+						solvespeed *= 2
 					elif event.key == pg.K_DOWN:
-						solvespeed /= 1.5
+						solvespeed /= 2
 					else:
 						newstacksize += event.unicode
 				if event.key == pg.K_ESCAPE:
