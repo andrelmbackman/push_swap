@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:52:52 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/07 12:30:48 by abackman         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:24:52 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 static int	exit_colour(t_print *p)
 {
-	p->ret += write(STDOUT_FILENO, "{", 1);
+	p->ret += write(p->fd, "{", 1);
 	return (1);
 }
 
 static int	put_colour(t_print *p, const char *format, int i)
 {
 	if (!ft_strncmp("{eoc}", format, i))
-		write(STDOUT_FILENO, RESET, sizeof(RESET));
+		write(p->fd, RESET, sizeof(RESET));
 	else if (!ft_strncmp("{red}", format, i))
-		write(STDOUT_FILENO, RED, sizeof(RED));
+		write(p->fd, RED, sizeof(RED));
 	else if (!ft_strncmp("{green}", format, i))
-		write(STDOUT_FILENO, GREEN, sizeof(GREEN));
+		write(p->fd, GREEN, sizeof(GREEN));
 	else if (!ft_strncmp("{blue}", format, i))
-		write(STDOUT_FILENO, BLUE, sizeof(BLUE));
+		write(p->fd, BLUE, sizeof(BLUE));
 	else if (!ft_strncmp("{yellow}", format, i))
-		write(STDOUT_FILENO, YELLOW, sizeof(YELLOW));
+		write(p->fd, YELLOW, sizeof(YELLOW));
 	else if (!ft_strncmp("{purple}", format, i))
-		write(STDOUT_FILENO, PURPLE, sizeof(PURPLE));
+		write(p->fd, PURPLE, sizeof(PURPLE));
 	else if (!ft_strncmp("{cyan}", format, i))
-		write(STDOUT_FILENO, CYAN, sizeof(CYAN));
+		write(p->fd, CYAN, sizeof(CYAN));
 	else if (!ft_strncmp("{black}", format, i))
-		write(STDOUT_FILENO, BLACK, sizeof(BLACK));
+		write(p->fd, BLACK, sizeof(BLACK));
 	else if (!ft_strncmp("{white}", format, i))
-		write(STDOUT_FILENO, WHITE, sizeof(WHITE));
+		write(p->fd, WHITE, sizeof(WHITE));
 	else
 		return (exit_colour(p));
 	return (i + 1);
