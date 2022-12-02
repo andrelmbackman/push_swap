@@ -43,7 +43,6 @@ color_inactive = pg.Color('lightskyblue3')
 color_active = pg.Color('dodgerblue2')
 width = 600
 height = 700
-solvespeed = 5
 screensize = (width,height)
 
 def	get_moves(ints):
@@ -110,8 +109,7 @@ def	main():
 	active = False
 	color = color_inactive
 	screen = init()
-	solvespeed = 5
-
+	solvespeed = stacksize
 	font = pg.font.Font(None, 32)
 	sizetext = font.render('size:', True, textcolor, background)
 	sizetextRect = sizetext.get_rect()
@@ -129,8 +127,11 @@ def	main():
 	x = 0
 	ps_moves = get_moves(istr)
 	moves_len = len(ps_moves)
+	print("Use up/down arrow keys to adjust the solving speed")
 	while run:
-		for event in pg.event.get():
+		events = pg.event.get()
+		pressed = pg.key.get_pressed()
+		for event in events:
 			if event.type == pg.QUIT:
 					run = False
 			elif event.type == pg.MOUSEBUTTONDOWN:
@@ -139,19 +140,19 @@ def	main():
 				else:
 					active = False
 				color = color_active if active else color_inactive
-			if event.type == pg.KEYDOWN:
-				if active:
-					if event.key == pg.K_RETURN:
-						print(newstacksize)
-						newstacksize = ''
-					elif event.key == pg.K_BACKSPACE:
-						newstacksize = newstacksize[:-1]
-					elif event.key == pg.K_UP:
-						solvespeed *= 2
-					elif event.key == pg.K_DOWN:
-						solvespeed /= 2
-					else:
-						newstacksize += event.unicode
+			elif event.type == pg.KEYDOWN:
+				#if active:
+				if pressed[pg.K_RETURN]:
+					print(newstacksize)
+					newstacksize = ''
+				elif pressed[pg.K_BACKSPACE]:
+					newstacksize = newstacksize[:-1]
+				elif pressed[pg.K_UP]:
+					solvespeed *= 1.5
+				elif pressed[pg.K_DOWN]:
+					solvespeed = int(solvespeed / 2)
+				else:
+					newstacksize += event.unicode
 				if event.key == pg.K_ESCAPE:
 					run = False
 				if (sizenumber < 0):
@@ -163,14 +164,15 @@ def	main():
 			exec_move(ps_moves[x], a_stack, b_stack)
 			x += 1
 		#screen.blit(bg, (0, 0))
-		txt_surface = font.render('', True, color)
+		strnum = str(stacksize)
+		txt_surface = font.render(strnum, True, color)
 		width = max(200, txt_surface.get_width()+10)
 		size_inputbox.w = width
 		screen.blit(sizetext, sizetextRect)
 		screen.blit(txt_surface, (size_inputbox.x+5, size_inputbox.y+5))
 		pg.draw.rect(screen, color, size_inputbox, 2)
 		pg.display.flip()
-		pg.time.delay(solvespeed)
+		pg.time.delay(int(1000 / solvespeed))
 	pg.quit()
 
 main()
