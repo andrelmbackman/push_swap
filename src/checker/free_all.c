@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:33:53 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/26 14:33:03 by abackman         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:17:02 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	checker_help(void)
 	ft_printf("\nChecker will then display a message:\n");
 	ft_printf("{green}OK{eoc} if the instructions sorted the stacks\n");
 	ft_printf("{yellow}KO{eoc} if the stacks were not sorted\n");
-	ft_printf("{red}error{eoc} in case of invalid moves.\n");
+	ft_printf("{red}Error{eoc} in case of invalid instructions.\n");
 	return (0);
 }
 
@@ -61,6 +61,5 @@ int	free_all(t_pusha *stacks, t_move **head, int message)
 {
 	free_moves(head);
 	ft_free_arr(stacks->valid_moves, (size_t)11);
-	ft_printf("\nFREE_ALL\n");
 	return (free_stacks(stacks, message));
 }
