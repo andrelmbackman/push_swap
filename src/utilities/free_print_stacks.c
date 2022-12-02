@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:41:10 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/26 14:31:46 by abackman         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:33:43 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ int	return_status(int status)
 {
 	if (status < 0)
 	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, "{red}Error\n");
 		return (-1);
 	}
 	else if (status > 0)
 	{
-		ft_putstr_fd("OK\n", STDOUT_FILENO);
+		ft_dprintf(STDOUT_FILENO, "{green}OK{eoc}\n");
 		return (1);
 	}
 	else
 	{
-		ft_putstr_fd("KO\n", STDOUT_FILENO);
+		ft_dprintf(STDOUT_FILENO, "{yellow}KO{eoc}\n");
 		return (0);
 	}
 }
