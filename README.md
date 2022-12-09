@@ -8,14 +8,14 @@ types of algorithms and choose the one (of many) most appropriate solution for a
 optimized data sorting."
 
 ### 1. The objective
-Sort an unspecified number of unique integers with the help of two stacks, using a specific set of moves (described at part 4. of this README). All numbers will be placed in stack A, then sorted (most likely with the help of stack B as a temporary buffer) and placed in ascending order in stack A. Stack B must be empty when the sorting is done.
+Sort an unspecified number of unique integers with the help of two stacks, using a specific set of moves (described at part 5. of this README). All numbers will be placed in stack A, then sorted (most likely with the help of stack B as a temporary buffer) and placed in ascending order in stack A. Stack B must be empty when the sorting is done.
 
 ### 2. Usage
 
 - Clone the repository
 - At the root of the repository, run: make.
 - This will compile two programs, called 'push_swap' and 'checker' respectively. You can run these programs with the -h flag (./checker -h) to see how to use them.
-- To show the visualization of the algorithm(made with pygame (pip3 install pygame)), run: python3 viz/ps_viz.py [integer between 2-500]
+- To show a visualization of the algorithm(made with pygame (pip3 install pygame)), run: python3 viz/ps_viz.py [integer between 2-500]
 #### Example:
 python3 viz/pz_viz.py 200
 
@@ -27,7 +27,24 @@ python3 viz/pz_viz.py 200
 - Integer sets of larger sizes are split into 12, 24 or 32 'chunks', depending on the number of integers to be sorted.
 - These chunks are pushed to stack B, four at a time, starting from the two chunks with the smallest integers and the two chunks with the biggest integers. The four middle chunks are pushed last. The integers are then pushed back to stack A in order, and stack A is rotated if necessary.
 
-### 4. The given moves are:
+### 4. The programs
+
+### push_swap
+ - takes a set of unique integers to be sorted as argument.
+ - prints instructions to the standard output. These instructions sort the integers according to the rules of the project.
+
+### checker
+ - takes a set of unique integers to be sorted as argument.
+ - waits for instructions (described in part 5.). Reads the instructions (divided by a newline character) from the standard input.
+ - if only valid instructions are given, the checker program attempts to sort the integers.
+ - if the integers are sorted, checker will print OK. If not, KO is printed.
+ 
+#### To check that the push_swap program works correctly, pipe the output of push_swap to the input of checker
+#### example:
+ARGS="4 5 1 2 3"; ./push_swap $ARGS | ./checker $ARGS
+
+
+### 5. The given moves are:
 
 #### sa: swap the first two elements of stack A
 #### sb: swap the first two elements of stack B
