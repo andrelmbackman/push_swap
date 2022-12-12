@@ -31,7 +31,7 @@ python3 viz/pz_viz.py 200
 
 ### push_swap
  - takes a set of unique integers to be sorted as argument.
- - prints instructions to the standard output. These instructions sort the integers according to the rules of the project.
+ - prints instructions (moves/actions) to the standard output. These instructions sort the integers according to the rules of the project.
 
 ### checker
  - takes a set of unique integers to be sorted as argument.
