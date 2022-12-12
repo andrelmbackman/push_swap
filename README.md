@@ -8,7 +8,7 @@ types of algorithms and choose the one (of many) most appropriate solution for a
 optimized data sorting."
 
 ### 1. The objective
-Sort an unspecified number of unique integers with the help of two stacks, using a specific set of moves (described at part 5. of this README). All numbers will be placed in stack A, then sorted (most likely with the help of stack B as a temporary buffer) and placed in ascending order in stack A. Stack B must be empty when the sorting is done.
+Sort an unspecified number of unique integers with the help of two stacks, using a specific set of moves (or actions, described at part 5. of this README). All numbers will be placed in stack A, then sorted (most likely with the help of stack B as a temporary buffer) and placed in ascending order in stack A. Stack B must be empty when the sorting is done.
 
 ### 2. Usage
 
@@ -44,7 +44,7 @@ python3 viz/pz_viz.py 200
 ARGS="4 5 1 2 3"; ./push_swap $ARGS | ./checker $ARGS
 
 
-### 5. The given moves are:
+### 5. The given moves (actions) are:
 
 #### sa: swap the first two elements of stack A
 #### sb: swap the first two elements of stack B
