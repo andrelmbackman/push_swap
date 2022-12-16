@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:20:05 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 15:01:45 by abackman         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:57:05 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	find_quickest(t_stack *b, int *goal)
 ** if it was the smallest one it is rotated to the bottom of a_stack.
 */
 
-int	rotate_pushback(t_pusha *stacks)
+/* int	rotate_pushback(t_pusha *stacks)
 {
 	int		goal;
 	int		dir;
@@ -133,5 +133,68 @@ int	rotate_pushback(t_pusha *stacks)
 				exec_ra(stacks);
 		}
 	}
+	return (1);
+} */
+
+static int	find_fastest(t_pusha *stacks, t_stack *dst, int *goal)
+{
+	int		i;
+	t_stack	*tmp;
+	t_stack	*a;
+	t_stack	*b;
+
+	i = 0;
+	tmp = stacks->b_stack;
+	a = dst->dst_prev;
+	b = dst->prev->dst_next;
+	if (tmp == a || tmp == b)
+		return (0);
+	while (tmp->next != stacks->b_stack)
+	{
+		if (tmp == a || tmp == b)
+			break ;
+		tmp = tmp->next;
+		i++;
+	}
+	*goal = tmp->num;
+	if (i < (stacks->b_size / 2))
+		return (1);
+	else
+		return (-1);
+}
+
+/*
+** BOTH THESE FUNCTIONS ARE TEMPORARY AND FAULTY, FIX
+*/
+
+int	rotate_pushback(t_pusha *stacks)
+{
+	t_stack	*tmp;
+	int		dir;
+	int		goal;
+
+	exec_pa(stacks);
+	tmp = stacks->a_stack;
+	while (stacks->b_stack != NULL)
+	{
+		dir = find_fastest(stacks, tmp, &goal);
+		while (stacks->b_stack->num != goal && dir < 0)
+			exec_rrb(stacks);
+		while (stacks->b_stack->num != goal && dir > 0)
+			exec_rb(stacks);
+		exec_pa(stacks);
+		tmp = stacks->a_stack;
+		if (stacks->b_stack == NULL)
+			break ;
+		if (stacks->a_stack->next != stacks->a_stack->dst_next)
+		{
+			if (find_fastest(stacks, tmp, &goal))
+				exec_rr(stacks);
+			else
+				exec_ra(stacks);
+		}
+		tmp = stacks->a_stack;
+	}
+	//print_stacks(stacks);
 	return (1);
 }

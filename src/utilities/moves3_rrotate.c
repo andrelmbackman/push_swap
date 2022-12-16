@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:17:38 by abackman          #+#    #+#             */
-/*   Updated: 2022/09/15 15:35:25 by abackman         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:13:26 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	exec_rra(t_pusha *stacks)
 		return (0);
 	stacks->a_stack = stacks->a_stack->prev;
 	if (stacks->print == 1)
-		write(1, "rra\n", 4);
+		write(STDOUT_FILENO, "rra\n", 4);
 	if (stacks->v == 1)
 		print_stacks(stacks);
 	return (1);
@@ -40,7 +40,7 @@ int	exec_rrb(t_pusha *stacks)
 		return (0);
 	stacks->b_stack = stacks->b_stack->prev;
 	if (stacks->print == 1)
-		write(1, "rrb\n", 4);
+		write(STDOUT_FILENO, "rrb\n", 4);
 	if (stacks->v == 1)
 		print_stacks(stacks);
 	return (1);
@@ -65,7 +65,7 @@ int	exec_rrr(t_pusha *stacks)
 		ret = 1;
 	if (stacks->print == 2)
 	{
-		write(1, "rrr\n", 4);
+		write(STDOUT_FILENO, "rrr\n", 4);
 		stacks->print = 1;
 	}
 	if (stacks->v)

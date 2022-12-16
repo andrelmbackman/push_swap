@@ -6,7 +6,7 @@
 /*   By: abackman <abackman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:30:27 by abackman          #+#    #+#             */
-/*   Updated: 2022/07/07 12:20:10 by abackman         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:27:37 by abackman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static int	conv_print(t_print *p, const char *format)
 			else
 				p->i += convert_no(p, &format[p->i]);
 		}
-		else if (format[p->i] == '{' && p->fd == STDOUT_FILENO)
+		else if (format[p->i] == '{' && \
+		(p->fd == STDOUT_FILENO || p->fd == STDERR_FILENO))
 			p->i += check_colour(p, &format[p->i]);
 		else
 			p->i += convert_no(p, &format[p->i]);
